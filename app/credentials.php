@@ -6,7 +6,7 @@ class Credentials
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $db = "test";
+    private $db = "DevMeth";
     public $conn;
     
     public function __construct()

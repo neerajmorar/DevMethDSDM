@@ -2,7 +2,7 @@
 
 //page consisting of functions and variables
 
-$backButton = "<p id='back'><a href='index.php?url=home/index'><i class='fa fa-arrow-left fa-2x'></i></a></p>"; //used for majority of site
+/*$backButton = "<p id='back'><a href='index.php?url=home/index'><i class='fa fa-arrow-left fa-2x'></i></a></p>"; //used for majority of site
 $backButtonEdit = "<p id='back'><a href='basket.php'><i class='fa fa-arrow-left fa-2x'></i></a></p>"; //used for editbasket.php
 
 function footer() {
@@ -25,4 +25,4 @@ function basketIcon() {
         echo "<span>" . count($_SESSION["basket"]) . "</span>";
     }
     echo "</div></a>";
-}
+}*/

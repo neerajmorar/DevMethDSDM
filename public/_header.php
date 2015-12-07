@@ -7,15 +7,16 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Switch Brand - <?php echo $pageTitle ?></title>
+        <title>AEMS - <?php echo $pageTitle ?></title>
         <link rel="stylesheet" type="text/css" href="CSS/theme.css" />
         <link href="CSS/font-awesome-4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <script type="text/javascript">
-            function clearForm() {
+            function clearForm() 
+            {
                 window.location.reload();
             }
         </script>
     </head>
     <body>
         <header>
-            <h1 id="heading"><a href="index.php">Switch Brand</a></h1>
+            <h1 id="heading"><a href="index.php">AEMS</a></h1>

@@ -27,5 +27,14 @@ class Home extends Controller
             $this->view('vwHome', $product->products);
         }
     }
+    
+    public function viewEventDetails($eventID)
+    {
+        $event = $this->model("Event");
+        
+        $event->viewEventDetails($eventID);
+        
+        $this->view("viewEventDetails", $event->events);
+    }
 
 }
