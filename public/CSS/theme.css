@@ -9,15 +9,17 @@
 html
 {
     background-color: #d9d4d4;
-    min-height: 100%;
+    height: 100%;
 }
 
 /* Styles body */
 body
 {
-    width: 60%; /* Body 60% of screen */
+    width: 100%; /* Body 60% of screen */
+    height: 100vh;
     margin-left: auto; /* Centres body */
     margin-right: auto;
+    margin-top: 0;
     font-family: SkolarOT, 'Trebuchet MS', Arial; /* Sets fonts for site */
 }
 
@@ -88,8 +90,9 @@ header
     background-color: #AA0000;
     color: #FFF;
     padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    margin-top: 0;
+    /*border-top-left-radius: 10px;
+    border-top-right-radius: 10px;*/
 }
 
 #heading a {
@@ -103,7 +106,7 @@ header
     padding: 10px 10px 0 10px;
     margin-top: -23px;
     background: linear-gradient(#bbbaba, #cfcaca);
-    min-height: 450px;
+    height: 100vh;
     overflow-y: auto;
     overflow-x: auto;
     position: relative;
