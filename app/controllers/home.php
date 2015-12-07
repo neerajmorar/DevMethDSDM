@@ -36,4 +36,14 @@ class Home extends Controller
         
         $this->view("viewEventDetails", $event->events);
     }
+    
+    public function createEvent()
+    {
+        $event = $this->model("Event");
+        
+        $event->getEventTypes();
+        
+        $this->view('createEvent', $event->eventTypes);
+        
+    }
 }

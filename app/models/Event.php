@@ -22,6 +22,7 @@ class Event
     private $connection;
     private $result;
     public $events = array();
+    public $eventTypes = array();
     
     //returns details on a given event
     public function viewEventDetails($eventID)
@@ -37,6 +38,25 @@ class Event
         while (($row = mysqli_fetch_assoc($this->result)) != false)
         {
             $this->events[] = $row;
+        }
+        
+        mysqli_free_result($this->result);
+        mysqli_close($this->connection);
+    }
+    
+    public function getEventTypes()
+    {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = 'SELECT * FROM eventType';
+        
+        $this->result = mysqli_query($this->connection, $query);
+        
+        while (($row = mysqli_fetch_assoc($this->result)) != false)
+        {
+            $this->eventTypes[] = $row;
         }
         
         mysqli_free_result($this->result);
