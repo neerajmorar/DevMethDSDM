@@ -19,4 +19,4 @@
     </head>
     <body>
         <header>
-            <h1 id="heading"><a href="index.php">AEMS</a></h1>
+            <h1 id="heading">AEMS</h1>
