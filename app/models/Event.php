@@ -23,6 +23,26 @@ class Event
     private $result;
     public $events = array();
     public $eventTypes = array();
+    public $eventList = array();
+    
+    public function showListOfEvents()
+    {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = "SELECT eventID, name FROM event";
+        
+        $this->result = mysqli_query($this->connection, $query);
+        
+        while (($row = mysqli_fetch_assoc($this->result)) != false)
+        {
+            $this->eventList[] = $row;
+        }
+        
+        mysqli_free_result($this->result);
+        mysqli_close($this->connection);
+    }
     
     //returns details on a given event
     public function viewEventDetails($eventID)

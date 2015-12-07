@@ -28,13 +28,15 @@ class Home extends Controller
         }
     }
     
-    public function viewEventDetails($eventID)
+    public function viewEventDetails($eventID = 1)
     {
         $event = $this->model("Event");
         
+        $event->showListOfEvents();
+        
         $event->viewEventDetails($eventID);
         
-        $this->view("viewEventDetails", $event->events);
+        $this->view("viewEventDetails", array($event->eventList,$event->events));
     }
     
     public function createEvent()
@@ -43,7 +45,6 @@ class Home extends Controller
         
         $event->getEventTypes();
         
-        $this->view('createEvent', $event->eventTypes);
-        
+        $this->view('createEvent', $event->eventTypes); 
     }
 }
