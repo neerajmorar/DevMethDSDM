@@ -36,9 +36,4 @@ class Home extends Controller
         
         $this->view("viewEventDetails", $event->events);
     }
-    
-    public function hello($Hie) 
-    {
-    
-    }
 }
