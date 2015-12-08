@@ -47,4 +47,6 @@ class Home extends Controller
         
         $this->view('createEvent', $event->eventTypes); 
     }
+    
+     
 }
