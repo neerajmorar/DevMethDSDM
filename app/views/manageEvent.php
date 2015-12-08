@@ -2,7 +2,7 @@
 
 require '../public/_elements.php';
 
-$pageTitle = 'View Event Details';
+$pageTitle = 'Manage Event';
 require '../public/_header.php';
 ?>
 
@@ -80,7 +80,7 @@ require '../public/_header.php';
         var e = document.getElementById("eventID");
         var eventID = e.options[e.selectedIndex].value;
         
-        window.location.assign((window.location.pathname) + "?url=home/viewEventDetails/" + eventID);
+        window.location.assign((window.location.pathname) + "?url=home/manageEvent/" + eventID);
     }
 </script>
 

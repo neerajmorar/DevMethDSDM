@@ -28,7 +28,7 @@ class Home extends Controller
         }
     }
     
-    public function viewEventDetails($eventID = 1)
+    public function manageEvent($eventID = 1)
     {
         $event = $this->model("Event");
         
@@ -36,7 +36,7 @@ class Home extends Controller
         
         $event->viewEventDetails($eventID);
         
-        $this->view("viewEventDetails", array($event->eventList,$event->events));
+        $this->view("manageEvent", array($event->eventList,$event->events));
     }
     
     public function createEvent()
