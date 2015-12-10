@@ -36,39 +36,42 @@ require '../public/_header.php';
                 </select>
             </div>
             <div>
-                Type: <?php echo $data[1][0]["typeDescription"]; ?>
+                Type: 
+                    <select disabled="disabled">
+                        <option value=""><?php echo $data[1][0]["typeDescription"]; ?></option>
+                    </select>    
             </div>
             <div>
-                Date: <?php echo date("d/m/Y", strtotime($data[1][0]["date"])); ?>
+                Date: <input disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" />
             </div>
             <div>
-                Description: <?php echo $data[1][0]["description"]; ?>
+                Description: <textarea disabled="disabled" rows="4" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
             </div>
             <div>
-                Post Material Link: <?php echo $data[1][0]["postMaterialLink"]; ?>
+                Post Material Link: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["postMaterialLink"]; ?>" />
             </div>
             <div>
-                Survey Link: <?php echo $data[1][0]["surveyLink"]; ?>
+                Survey Link: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["surveyLink"]; ?>" disabled="disabled" />
             </div>
         </div>
         <div class="right-col">
             <div>
-                Address 1: <?php echo $data[1][0]["address1"]; ?>
+                Address 1: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" />
             </div>
             <div>
-                Address 2: <?php echo $data[1][0]["address2"]; ?>
+                Address 2: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["address2"]; ?>" />
             </div>
             <div>
-                City: <?php echo $data[1][0]["city"]; ?>
+                City: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" />
             </div>
             <div>
-                Post Code: <?php echo $data[1][0]["postCode"]; ?>
+                Post Code: <input disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" />
             </div>
             <div>
-                Contributor Number: <?php echo $data[1][0]["noOfContributors"]; ?>
+                Total Contributors: <?php echo $data[1][0]["noOfContributors"]; ?>
             </div>
             <div>
-                Audience Number: <?php echo $data[1][0]["noOfAudienceMembers"]; ?>
+                Total Audience Members: <?php echo $data[1][0]["noOfAudienceMembers"]; ?>
             </div>
         </div>
     </div>
