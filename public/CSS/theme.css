@@ -15,7 +15,7 @@ html
 /* Styles body */
 body
 {
-    width: 100%; /* Body 60% of screen */
+    width: 100%; /* Body 100% of screen */
     height: 100vh;
     margin-left: auto; /* Centres body */
     margin-right: auto;
@@ -43,7 +43,7 @@ header
 }
 
 /* Styles basket icon */
-#cart
+/*#cart
 {
     width: 60px;
     margin-left: auto;
@@ -82,7 +82,7 @@ header
 #cart a:active {
     color: #FFF;
     opacity: 1;
-}
+}*/
 
 /* Styles website heading h1 */
 #heading
@@ -113,7 +113,7 @@ header
 }
 
 /* Styles back button */
-#back a 
+/*#back a 
 {
     color: #FFF;
     transition: 0.5s;
@@ -126,10 +126,10 @@ header
 
 #greeting {
     font-weight: bold;
-}
+}*/
 
 /* Styles image scroll appropriately */
-.imageContainer
+/*.imageContainer
 {
     margin-top: 50px;
     margin-left: -10px;
@@ -195,13 +195,13 @@ header
     margin-left: 250px;
     font-size: large;
     color: #AA0000;
-}
+}*/
 
 h3 {
     margin-top: 50px;
 }
 
-#suggested
+/*#suggested
 {
     margin-left: -10px;
     margin-right: -10px;
@@ -217,7 +217,7 @@ h3 {
 }
 
 /* Creates add to basket button style */
-#basket a {
+/*#basket a {
     text-decoration: none;
     color: #000;
     position: relative;
@@ -264,10 +264,10 @@ h3 {
 {
     margin-left: 250px;
     font-size: large;
-}
+}*/
 
 /* Styles remove from basket button */
-.delete 
+/*.delete 
 {
     margin-top: 30px;
 }
@@ -320,10 +320,10 @@ h3 {
 {
     margin-top: 3em;
     margin-left: 0;
-}
+}*/
 
 /* Styles check out button */
-#checkOut 
+/*#checkOut 
 {
     margin-top: -90px;
     margin-bottom: 30px;
@@ -361,43 +361,81 @@ h3 {
     display: inline;
     margin-left: 10px;
     color: #AA0000;
-}
+}*/
 
 /* Styles total cost to make it distinct */
-#total
+/*#total
 {
     font-size: 50px;
     font-weight: bold;
     font-family: Calibri, 'Trebuchet MS', SkolarOT;
     margin-top: 30px;
-}
+}*/
 
 /* Styles text input */
 input[type=text]
 {
-    border: 1px solid #dbd6d6;
+    /*border: 1px solid #dbd6d6;*/
     border-radius: 2.5px;
+    font-size: large;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+input[type=date]
+{
+    /*border: 1px solid #dbd6d6;*/
+    border-radius: 2.5px;
+    font-size: large;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+select, option
+{
+    /*border: 1px solid #dbd6d6;*/
+    border-radius: 2.5px;
+    font-size: large;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+textarea
+{
+    /*border: 1px solid #dbd6d6;*/
+    border-radius: 2.5px;
+    font-size: large;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.plain-text
+{
+    font-size: larger;
+    box-sizing: border-box;
 }
 
 input[type=email]
 {
-    border: 1px solid #dbd6d6;
+    /*border: 1px solid #dbd6d6;*/
     border-radius: 2.5px;
+    box-sizing: border-box;
 }
 
 input[type=password]
 {
-    border: 1px solid #dbd6d6;
+    /*border: 1px solid #dbd6d6;*/
     border-radius: 2.5px;
+    box-sizing: border-box;
 }
 
-.clientStyle
+/*.clientStyle
 {
     margin-left: 5px;
-}
+}*/
 
 /* Styles warning */
-.commonWarning {
+/*.commonWarning {
     color: #AA0000;
     padding-left: 10px;
 }
@@ -432,4 +470,63 @@ input[type=password]
     color: #FFF;
     background-color: #AA0000;
     border: 1px solid #AA0000;
+}*/
+
+.table-layout
+{
+    /*border: 1px solid black;*/
+    width: 85%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    box-sizing: border-box;
+}
+
+.table-layout .left-col
+{
+    /*border: 1px solid black;*/
+    width: 49%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.table-layout .table-space
+{
+    float: right;
+    width: 2%;
+}
+
+.table-layout .right-col
+{
+    /*border: 1px solid black;*/
+    width: 49%;
+    height: 100%;
+    float: right;
+    box-sizing: border-box;
+}
+
+/*.table-layout .right-col .right-col-align
+{
+    border: 1px solid black;
+    margin-right: 0;
+    margin-left: auto;
+    display: inline-block;
+}*/
+
+.row-2, .row-3, .row-4, .row-5, .row-6, .row-7
+{
+    margin-top: 20px;
+}
+
+label
+{
+    font-size: larger;
+    display: block;
+    float: left;
+    clear: left;
+    width: 50%;
+    box-sizing: border-box;
+    /*border: 1px solid black;*/
 }
