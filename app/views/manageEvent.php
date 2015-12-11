@@ -46,7 +46,7 @@ require '../public/_header.php';
                     <label>Date: </label> <input disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" />
                 </div>
                 <div class="row-5">
-                    <label>Description: </label> <textarea disabled="disabled" rows="4" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
+                    <label>Description: </label> <textarea disabled="disabled" rows="10" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
                 </div>
                 <div class="row-6">
                     <label>Post Material Link: </label> <input disabled="disabled" type="text" value="<?php echo $data[1][0]["postMaterialLink"]; ?>" />

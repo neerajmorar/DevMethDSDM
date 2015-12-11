@@ -407,6 +407,7 @@ textarea
     font-size: large;
     box-sizing: border-box;
     width: 50%;
+    resize: vertical;
 }
 
 .plain-text
