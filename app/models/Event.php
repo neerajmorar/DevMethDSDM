@@ -11,14 +11,16 @@ class Event
     public $name;
     public $date;
     public $description;
-    public $noOfContributors;
-    public $noOfAudienceMembers;
     public $address1;
     public $address2;
     public $city;
     public $postCode;
-    public $postMaterialLink;
-    public $surveyLink;*/
+    */
+    public $noOfContributors = 0;
+    public $noOfAudienceMembers = 0;
+    public $postMaterialLink = '';
+    public $surveyLink = '';
+            
     private $connection;
     private $result;
     public $events = array();
@@ -64,6 +66,7 @@ class Event
         mysqli_close($this->connection);
     }
     
+    //derives types of the events from db
     public function getEventTypes()
     {
         //instantiates connection object from credentials.php
@@ -77,6 +80,26 @@ class Event
         while (($row = mysqli_fetch_assoc($this->result)) != false)
         {
             $this->eventTypes[] = $row;
+        }
+        
+        mysqli_free_result($this->result);
+        mysqli_close($this->connection);
+    }
+    
+    public function registerEvent($eventName, $eventType, $eventDate, $address1, $address2, $city, $postcode, $description)
+    {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = 'INSERT INTO event ("type", "name", "date", "noOfContributors", "noOfAudienceMembers", "address1", "address2", "city", "postCode", "postMaterialLink", "surveyLink", "description")'
+                . 'VALUES("$eventName", "$eventType", "$eventDate", "0", "0", "$address1", "$address2", "$city", "$postcode", " ", " ", "$description")';
+        
+        $this->result = mysqli_query($this->connection, $query);
+        
+        while (($row = mysqli_fetch_assoc($this->result)) != false)
+        {
+            $this->events[] = $row;
         }
         
         mysqli_free_result($this->result);

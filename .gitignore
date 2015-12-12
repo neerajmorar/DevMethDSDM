@@ -1,5 +1,15 @@
 
 nbproject/private/private.properties
 
+<<<<<<< Updated upstream
 *.properties
 *.xml
+=======
+<<<<<<< Updated upstream
+*.properties
+=======
+*.properties
+
+app/views/createEvent.php
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
