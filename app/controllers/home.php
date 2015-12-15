@@ -32,11 +32,24 @@ class Home extends Controller
     {
         $event = $this->model("Event");
         
+        if (isset($_POST["eventName"]) && isset($_POST["eventType"]) && isset($_POST["eventDate"])
+                 && isset($_POST["eventDesc"]) && isset($_POST["eventAdd1"])
+                 && isset($_POST["eventCity"]) && isset($_POST["eventPostCode"]))
+        {
+            $event->updateEvent($eventID, $_POST["eventType"], $_POST["eventName"], $_POST["eventDate"], $_POST["eventAdd1"], 
+                    $_POST["eventAdd2"], $_POST["eventCity"], $_POST["eventPostCode"], $_POST["eventMatLink"], $_POST["eventDesc"]);
+            
+            header("location: index.php?url=home/manageEvent/" . $eventID);
+            die();
+        }
+        
         $event->showListOfEvents();
         
         $event->viewEventDetails($eventID);
         
-        $this->view("manageEvent", array($event->eventList,$event->events));
+        $event->getEventTypes();
+        
+        $this->view("manageEvent", array($event->eventList,$event->events,$event->eventTypes));
     }
     
     //handles event creation

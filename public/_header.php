@@ -17,6 +17,6 @@
             }
         </script>
     </head>
-    <body>
+    <body id="body" <?php $urlTest = explode('/', $_GET["url"]); if ($urlTest[1] == "manageEvent") { echo "onbeforeunload='return confirmRefresh()'"; } ?>>
         <header>
             <h1 id="heading">AEMS</h1>

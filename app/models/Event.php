@@ -46,6 +46,21 @@ class Event
         mysqli_close($this->connection);
     }
     
+    public function updateEvent($eventID, $type, $name, $date, $add1, $add2, $city, $postCode, $pml, $desc)
+    {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = "UPDATE event SET type = $type, name = '$name', date = '$date'," .
+                "address1 = '$add1', address2 = '$add2', city = '$city', postCode = '$postCode'," .
+                "postMaterialLink = '$pml', description = '$desc' WHERE eventID = $eventID";
+        
+        mysqli_query($this->connection, $query);
+        
+        mysqli_close($this->connection);
+    }
+    
     //returns details on a given event
     public function viewEventDetails($eventID)
     {
