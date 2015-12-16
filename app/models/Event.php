@@ -53,7 +53,7 @@ class Event
         $this->connection = $conn->conn;
         
         $query = $this->connection->prepare("UPDATE event "
-                . "SET type = ?, name = ?, date = ?, address1 = ?, address2 = ?, city = ?, postCode = ?, postMaterialLink = ?, description = ? "
+                . "SET type = ?, name = ?, date = ?, address1 = ?, address2 = NULLIF(?,''), city = ?, postCode = ?, postMaterialLink = NULLIF(?,''), description = ? "
                 . "WHERE eventID = ?") or die(mysqli_error($this->connection));
         $query->bind_param("issssssssi", $type, $name, $date, $add1, $add2, $city, $postCode, $pml, $desc, $eventID);
         
@@ -76,9 +76,6 @@ class Event
         
         $query->close();
         mysqli_close($this->connection);
-        
-        header("location: index.php?url=home/manageEvent");
-        die();
     }
     
     //returns details on a given event

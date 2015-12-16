@@ -157,6 +157,8 @@ require '../public/_header.php';
         deleteButton.setAttribute("value", "Delete");
         deleteButton.setAttribute("onclick", "deleteEvent()");
         deleteButton.style.marginLeft = "4px";
+        deleteButton.style.backgroundColor = "#AA0000";
+        deleteButton.style.color = "#FFF";
         document.getElementById("manageEventForm").insertBefore(deleteButton, document.getElementById("formContent"));
         
         document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)");

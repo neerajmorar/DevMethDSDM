@@ -65,6 +65,9 @@ class Home extends Controller
         $event = $this->model("Event");
         
         $event->deleteEvent($eventID);
+        
+        header("location: index.php?url=home/manageEvent");
+        die();
     }
     
     //handles event creation
