@@ -52,12 +52,14 @@ class Event
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
-        $query = "UPDATE event SET type = $type, name = '$name', date = '$date'," .
-                "address1 = '$add1', address2 = '$add2', city = '$city', postCode = '$postCode'," .
-                "postMaterialLink = '$pml', description = '$desc' WHERE eventID = $eventID";
+        $query = $this->connection->prepare("UPDATE event "
+                . "SET type = ?, name = ?, date = ?, address1 = ?, address2 = ?, city = ?, postCode = ?, postMaterialLink = ?, description = ? "
+                . "WHERE eventID = ?") or die(mysqli_error($this->connection));
+        $query->bind_param("issssssssi", $type, $name, $date, $add1, $add2, $city, $postCode, $pml, $desc, $eventID);
         
-        mysqli_query($this->connection, $query);
+        $query->execute();
         
+        $query->close();
         mysqli_close($this->connection);
     }
     

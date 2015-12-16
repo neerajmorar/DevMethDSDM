@@ -30,25 +30,33 @@ class Home extends Controller
     
     public function manageEvent($eventID = 1)
     {
+        //instantiate object of model Event
         $event = $this->model("Event");
         
+        //check to see if the manageEvent form has been posted
         if (isset($_POST["eventName"]) && isset($_POST["eventType"]) && isset($_POST["eventDate"])
                  && isset($_POST["eventDesc"]) && isset($_POST["eventAdd1"])
                  && isset($_POST["eventCity"]) && isset($_POST["eventPostCode"]))
         {
+            //if so, apply changes to database
             $event->updateEvent($eventID, $_POST["eventType"], $_POST["eventName"], $_POST["eventDate"], $_POST["eventAdd1"], 
                     $_POST["eventAdd2"], $_POST["eventCity"], $_POST["eventPostCode"], $_POST["eventMatLink"], $_POST["eventDesc"]);
             
+            //refresh the page and clear all $_POST variables
             header("location: index.php?url=home/manageEvent/" . $eventID);
             die();
         }
         
+        //generate list of all existing events
         $event->showListOfEvents();
         
+        //get event info of specified event
         $event->viewEventDetails($eventID);
         
+        //get list of all types of events
         $event->getEventTypes();
         
+        //load manageEvent view and pass appropriate data
         $this->view("manageEvent", array($event->eventList,$event->events,$event->eventTypes));
     }
     
