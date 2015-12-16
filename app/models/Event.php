@@ -63,6 +63,24 @@ class Event
         mysqli_close($this->connection);
     }
     
+    public function deleteEvent($eventID)
+    {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = $this->connection->prepare("DELETE FROM event WHERE eventID = ?");
+        $query->bind_param("i", $eventID);
+        
+        $query->execute();
+        
+        $query->close();
+        mysqli_close($this->connection);
+        
+        header("location: index.php?url=home/manageEvent");
+        die();
+    }
+    
     //returns details on a given event
     public function viewEventDetails($eventID)
     {

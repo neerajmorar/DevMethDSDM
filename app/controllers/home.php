@@ -60,6 +60,13 @@ class Home extends Controller
         $this->view("manageEvent", array($event->eventList,$event->events,$event->eventTypes));
     }
     
+    public function deleteEvent($eventID)
+    {
+        $event = $this->model("Event");
+        
+        $event->deleteEvent($eventID);
+    }
+    
     //handles event creation
     public function createEvent()
     {

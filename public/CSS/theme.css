@@ -20,13 +20,13 @@ body
     margin-left: auto; /* Centres body */
     margin-right: auto;
     margin-top: 0;
-    font-family: SkolarOT, 'Trebuchet MS', Arial; /* Sets fonts for site */
+    font-family: /*SkolarOT, */'Calibri Light', 'Trebuchet MS', Arial; /* Sets fonts for site */
 }
 
 /* Psuedo elements which changes mouse highlight color */
-::-moz-selection
+/*::-moz-selection
 { /* Code for Firefox */
-    color: #FFF;
+/*    color: #FFF;
     background-color: #AA0000;
 }
 
@@ -34,7 +34,7 @@ body
 {
     color: #FFF;
     background-color: #AA0000;
-}
+}*/
 
 /* Header always 80px; */
 header
@@ -87,10 +87,11 @@ header
 /* Styles website heading h1 */
 #heading
 {
-    background-color: #AA0000;
+    background-color: #0d5a99;
     color: #FFF;
     padding: 10px;
     margin-top: 0;
+    font-family: 'SkolarOT';
     /*border-top-left-radius: 10px;
     border-top-right-radius: 10px;*/
 }
@@ -389,6 +390,24 @@ input[type=date]
     font-size: large;
     box-sizing: border-box;
     width: 50%;
+}
+
+input[type=button], input[type=submit]
+{
+    text-decoration: none;
+    color: #000;
+    border: 1px solid #FFF;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #FFF;
+    width: 164px;
+}
+
+input[type=button]:hover, input[type=submit]:hover 
+{
+    color: #FFF;
+    background-color: #0d5a99;
+    border: 1px solid #0d5a99;
 }
 
 select, option

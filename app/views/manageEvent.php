@@ -9,11 +9,11 @@ require '../public/_header.php';
 </header>
 
 <div id="content">
-    <h2><?php echo $pageTitle; ?></h2>
-    
-    <input type="button" id="editEvent" onclick="editForm()" value="Edit"/>
+    <h2><?php echo $pageTitle; ?></h2>    
     
     <form method="post" id="manageEventForm">
+        <input type="button" id="editEvent" onclick="editForm()" value="Edit"/>
+        
         <div class="table-layout" id="formContent">
             <div class="left-col">
                 <div class="row-1">
@@ -101,9 +101,13 @@ require '../public/_header.php';
     
     function confirmRefresh(submit)
     {
-        if (editOn === true && submit === true)
+        if (editOn === true && submit === 1)
         {
             return "Are you sure you want to make these changes? You won't be able to revert them after.";
+        }
+        else if (editOn === true && submit === 2)
+        {
+            return "WARNING! You are about to delete this event. Do you want to continue?";
         }
         else if (editOn === true)
         {
@@ -122,15 +126,15 @@ require '../public/_header.php';
     function editForm()
     {
         var eList = document.getElementsByClassName("editForm");
-        var editFormButton = document.getElementById("editEvent");
         var e = document.getElementById("eventID");
-        var eventName = e.options[e.selectedIndex].text;
-        var textInput = document.createElement("input");
         
         Array.prototype.forEach.call(eList, function(e)
         {
             e.removeAttribute("disabled");
         });
+        
+        var eventName = e.options[e.selectedIndex].text;
+        var textInput = document.createElement("input");
         
         textInput.setAttribute("type", "text");
         textInput.setAttribute("value", eventName);
@@ -138,15 +142,24 @@ require '../public/_header.php';
         var parentNode = document.getElementById("eventName");
         parentNode.replaceChild(textInput,e);
         
+        var editFormButton = document.getElementById("editEvent");
         editFormButton.value = "Cancel";
         editFormButton.setAttribute("onclick","cancelEvent()");
         
         var submitButton = document.createElement("input");
         submitButton.setAttribute("type", "submit");
         submitButton.setAttribute("value", "Save");
+        submitButton.setAttribute("onclick", "saveEvent()");
         document.getElementById("manageEventForm").insertBefore(submitButton, document.getElementById("formContent"));
         
-        document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(true)");
+        var deleteButton = document.createElement("input");
+        deleteButton.setAttribute("type", "button");
+        deleteButton.setAttribute("value", "Delete");
+        deleteButton.setAttribute("onclick", "deleteEvent()");
+        deleteButton.style.marginLeft = "4px";
+        document.getElementById("manageEventForm").insertBefore(deleteButton, document.getElementById("formContent"));
+        
+        document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)");
         
         editOn = true;
     }
@@ -155,6 +168,20 @@ require '../public/_header.php';
     {
         document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh()");
         location.reload();
+    }
+    
+    function saveEvent()
+    {
+       document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)"); 
+    }
+    
+    function deleteEvent()
+    {
+        var eventID = <?php echo $data[1][0]["eventID"]; ?>
+        
+        document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(2)");
+        
+        window.location.assign((window.location.pathname) + "?url=home/deleteEvent/" + eventID);
     }
 </script>
 
