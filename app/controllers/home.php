@@ -28,8 +28,16 @@ class Home extends Controller
         }
     }
     
-    public function manageEvent($eventID = 1)
+    //controller method to handle manage event page
+    public function manageEvent($eventID = null)
     {
+        //avoiding SQL injection; accepts null parameter
+        if (empty($eventID) == false && is_numeric($eventID) == false)
+        {
+            header("location: index.php?url=home/manageEvent");
+            die();
+        }
+
         //instantiate object of model Event
         $event = $this->model("Event");
         

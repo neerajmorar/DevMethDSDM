@@ -52,6 +52,8 @@ class Event
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
+        //updates row of specified event id
+        //prepared statement to prevent SQL injection
         $query = $this->connection->prepare("UPDATE event "
                 . "SET type = ?, name = ?, date = ?, address1 = ?, address2 = NULLIF(?,''), city = ?, postCode = ?, postMaterialLink = NULLIF(?,''), description = ? "
                 . "WHERE eventID = ?") or die(mysqli_error($this->connection));
@@ -69,6 +71,8 @@ class Event
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
+        //deletes row from event table with given event id
+        //prepared statement to prevent SQL injection
         $query = $this->connection->prepare("DELETE FROM event WHERE eventID = ?");
         $query->bind_param("i", $eventID);
         
@@ -78,13 +82,32 @@ class Event
         mysqli_close($this->connection);
     }
     
-    //returns details on a given event
+    //returns details on a given event; mainly drives the manage event page
     public function viewEventDetails($eventID)
     {
         //instantiates connection object from credentials.php
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
+        //if $eventID is null, it will display data of the first row
+        //that exists in event table
+        if (empty($eventID))
+        {
+            $query = "SELECT MIN(eventID) as eventID FROM event";
+            $this->result = mysqli_query($this->connection, $query);
+            
+            while (($row = mysqli_fetch_assoc($this->result)) != false)
+            {
+                $ids[] = $row;
+            }
+            
+            //if no event exists in event table, it will redirect to creat event page
+            $eventID = $ids[0]["eventID"] or die(header("location: index.php?url=home/createEvent"));
+            
+            mysqli_free_result($this->result);
+        }
+        
+        //gets all the info related to provided event id
         $query = "SELECT a.*, b.typeDescription FROM event a INNER JOIN eventtype b ON a.type = b.typeID WHERE a.eventID = $eventID";
         
         $this->result = mysqli_query($this->connection, $query);
