@@ -147,8 +147,8 @@ class Event
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
-        $query = 'INSERT INTO event ("type", "name", "date", "noOfContributors", "noOfAudienceMembers", "address1", "address2", "city", "postCode", "postMaterialLink", "surveyLink", "description")'
-                . 'VALUES("$eventName", "$eventType", "$eventDate", "0", "0", "$address1", "$address2", "$city", "$postcode", " ", " ", "$description")';
+        $query = 'INSERT INTO event (type, name, date, noOfContributors, noOfAudienceMembers, address1, address2, city, postCode, postMaterialLink, surveyLink, description)'
+                . 'VALUES("$eventName", "$eventType", "$eventDate", "$noOfContributors", "$noOfAudienceMembers", "$address1", "$address2", "$city", "$postcode", " ", " ", "$description")';
         
         $this->result = mysqli_query($this->connection, $query);
         
@@ -159,6 +159,11 @@ class Event
         
         mysqli_free_result($this->result);
         mysqli_close($this->connection);
+    }
+    
+    public function viewEventConfirmation()
+    {
+        
     }
 }
 

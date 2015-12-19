@@ -16,6 +16,21 @@ require '../public/_header.php';
     
     <h4>Summary of the event:</h4>
     
+    <div class="table-layout">
+        
+        <div class="left-col">
+            
+            <div class="row-1">
+                <label>Name:*</label>
+                <?php   ?>
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+    
 </div>
 
 </body>

@@ -152,7 +152,7 @@ class Home extends Controller
         {
             $eventSetup = $this->model('Event');
             $eventSetup->registerEvent($_POST['eventName'], $_POST['eventType'], $_POST['eventDate'], $_POST['address1'], $_POST['address2'], $_POST['city'], $_POST['postcode'], $_POST['description']);
-            //$this->view('setupConfirmation', $eventSetup->events);
+            $this->view('setupConfirmation', $eventSetup->events);
         }
     }
     

@@ -17,43 +17,69 @@ require '../public/_header.php';
     <p>* Required fields.</p>
             
     <form id='eventSetup' method='POST' action='index.php?url=home/eventSetup'>
+        
+         <div class="table-layout">
+             
+             <div class="left-col">
                 
-        <label>Name:*</label>
-        <input type='text' name='eventName' placeholder='Event Name' value='<?php if(isset($_POST['eventName'])){ echo $_POST['eventName'];}?>'>
-        <p><?php if(isset($errors["eventName"])){ echo $errors["eventName"];}?></p>
+                <div class="row-1">
+                    <label>Name:*</label>
+                    <input type='text' name='eventName' placeholder='Event Name' value='<?php if(isset($_POST['eventName'])){ echo $_POST['eventName'];}?>'>
+                    <p><?php if(isset($errors["eventName"])){ echo $errors["eventName"];}?></p>
+                </div>
                 
-        <label>Type:*</label>
-        <select name='eventType'>
-        <option value='empty'>Select</option>
-        <option value='1'><?php echo $data[0]['typeDescription']; ?></option>
-        <option value='2'><?php echo $data[1]['typeDescription']; ?></option>
-        <option value='3'><?php echo $data[2]['typeDescription']; ?></option>
-        </select>
+                <div class="row-2">
+                    <label>Type:*</label>
+                    <select name='eventType'>
+                    <option value='empty'>Select</option>
+                    <option value='1'><?php echo $data[0]['typeDescription']; ?></option>
+                    <option value='2'><?php echo $data[1]['typeDescription']; ?></option>
+                    <option value='3'><?php echo $data[2]['typeDescription']; ?></option>
+                    </select>
+                </div>
 
-        <label>Date:*</label>
-        <label>(YYYY-MM-DD)</label>
-        <input type='text' name='eventDate' placeholder='Event Date'>
+                <div class="row-3">
+                    <label>Date:*</label>
+                    <label>(YYYY-MM-DD)</label>
+                    <input type='date' name='eventDate' placeholder='Event Date'>
+                    <?php echo date('Y-m-d', "12/12/15"); ?>
+                </div>
+                    
+                <div class="row-4">
+                    <label>Address 1:*</label>
+                    <input type='text' name='address1' placeholder='Address'>
+                </div>
+                    
+                <div class="row-5">
+                    <label>Address 2:</label>
+                    <input type='text' name='address2' placeholder='Address'>
+                </div>
+                 
+                <div class="row-6">
+                    <label>City:*</label>
+                    <input type='text' name='city' placeholder='City'>
+                </div>
+            </div>
+            <div class="table-space"></div>
+            <div class="right-col">
                 
-        <label>Address 1:*</label>
-        <input type='text' name='address1' placeholder='Address'>
+                <div class="row-1">
+                    <label>Postcode:*</label>
+                    <input type='text' name='postcode' placeholder='Postcode'>
+                </div>
                 
-        <label>Address 2:</label>
-        <input type='text' name='address2' placeholder='Address'>
-                
-        <label>City:*</label>
-        <input type='text' name='city' placeholder='City'>
-                
-        <label>Postcode:*</label>
-        <input type='text' name='postcode' placeholder='Postcode'>
-                
-        <label>Description:*</label>
-        <textarea name='description' id='desc' rows='10' cols='50' placeholder='Description'></textarea>
+                <div class="row-2">
+                    <label>Description:*</label>
+                    <textarea name='description' id='desc' rows='10' cols='50' placeholder='Description'></textarea>
+                </div>
+
+                <input type='submit' value='Submit'/>
+                <input type='button' value='Reset' onclick='clearForm()' />
+                <input type='button' value='Save'>
+            </div>
+            </div>
         
-  
-        <input type='submit' value='Submit'/>
-        <input type='button' value='Reset' onclick='clearForm()' />
-        <input type='button' value='Save'>
-        
+        </div>
     </form>
     
 </div>
