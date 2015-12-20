@@ -42,9 +42,9 @@ class Home extends Controller
         $event = $this->model("Event");
         
         //check to see if the manageEvent form has been posted
-        if (isset($_POST["eventName"]) && isset($_POST["eventType"]) && isset($_POST["eventDate"])
-                 && isset($_POST["eventDesc"]) && isset($_POST["eventAdd1"])
-                 && isset($_POST["eventCity"]) && isset($_POST["eventPostCode"]))
+        if (!empty($_POST["eventName"]) && isset($_POST["eventType"]) && !empty($_POST["eventDate"])
+                 && !empty($_POST["eventDesc"]) && !empty($_POST["eventAdd1"])
+                 && !empty($_POST["eventCity"]) && !empty($_POST["eventPostCode"]))
         {
             //if so, apply changes to database
             $event->updateEvent($eventID, $_POST["eventType"], $_POST["eventName"], $_POST["eventDate"], $_POST["eventAdd1"], 

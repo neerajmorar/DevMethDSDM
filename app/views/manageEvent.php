@@ -32,6 +32,7 @@ if (isset($data[1][0]) == false)
         <!-- edit button; used to edit the event - see JavaScript at the bottom of page -->
         <input type="button" id="editEvent" onclick="editForm()" value="Edit"/>
         
+        <p id="reqFields"><strong>* Required fields</strong></p>
         <!-- use a table layout to order form elements side-by-side using CSS -->
         <div class="table-layout" id="formContent">
             <!-- left column for table layout -->
@@ -41,7 +42,7 @@ if (isset($data[1][0]) == false)
                     <label>Event ID: </label> <span class="plain-text"><?php echo $data[1][0]["eventID"]; ?></span>
                 </div>
                 <div class="row-2" id="eventName">
-                    <label>Name: </label> 
+                    <label>Name:* </label> 
 
                     <select id="eventID" onchange="reloadPage()">
                         <?php
@@ -61,7 +62,7 @@ if (isset($data[1][0]) == false)
                     </select>
                 </div>
                 <div class="row-3">
-                    <label>Type: </label>
+                    <label>Type:* </label>
                         <select disabled="disabled" class="editForm" name="eventType">
                             <?php
                                 //create dropdown list of event types
@@ -80,10 +81,10 @@ if (isset($data[1][0]) == false)
                         </select>    
                 </div>
                 <div class="row-4">
-                    <label>Date: </label> <input class="editForm" name="eventDate" disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" />
+                    <label>Date:* </label> <input class="editForm" name="eventDate" disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" />
                 </div>
                 <div class="row-5">
-                    <label>Description: </label> <textarea class="editForm" name="eventDesc" disabled="disabled" rows="10" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
+                    <label>Description:* </label> <textarea class="editForm" name="eventDesc" disabled="disabled" rows="10" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
                 </div>
                 <div class="row-6">
                     <label>Post Material Link: </label> <input class="editForm" name="eventMatLink" disabled="disabled" type="text" value="<?php echo $data[1][0]["postMaterialLink"]; ?>" />
@@ -98,16 +99,16 @@ if (isset($data[1][0]) == false)
             <div class="right-col">
                 <!-- create rows, each row has corresponding row in left column -->
                 <div class="row-1">
-                    <label>Address 1: </label> <input class="editForm" name="eventAdd1" disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" />
+                    <label>Address 1:* </label> <input class="editForm" name="eventAdd1" disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" />
                 </div>
                 <div class="row-2">
                     <label>Address 2: </label> <input class="editForm" name="eventAdd2" disabled="disabled" type="text" value="<?php echo $data[1][0]["address2"]; ?>" />
                 </div>
                 <div class="row-3">
-                    <label>City: </label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" />
+                    <label>City:* </label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" />
                 </div>
                 <div class="row-4">
-                    <label>Post Code: </label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" />
+                    <label>Post Code:* </label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" />
                 </div>
                 <div class="row-5">
                     <label>Total Contributors: </label> <span class="plain-text"><?php echo $data[1][0]["noOfContributors"]; ?></span>
@@ -197,7 +198,7 @@ if (isset($data[1][0]) == false)
         submitButton.setAttribute("value", "Save");
         submitButton.setAttribute("onclick", "saveEvent()");
         //insert button before the table-layout div
-        document.getElementById("manageEventForm").insertBefore(submitButton, document.getElementById("formContent"));
+        document.getElementById("manageEventForm").insertBefore(submitButton, document.getElementById("reqFields"));
         
         //create delete button
         var deleteButton = document.createElement("input");
@@ -208,7 +209,7 @@ if (isset($data[1][0]) == false)
         //background color red to give as a sign of warning
         deleteButton.style.backgroundColor = "#AA0000";
         deleteButton.style.color = "#FFF";
-        document.getElementById("manageEventForm").insertBefore(deleteButton, document.getElementById("formContent"));
+        document.getElementById("manageEventForm").insertBefore(deleteButton, document.getElementById("reqFields"));
         
         //edit confirmRefresh function to display message 1
         document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)");
