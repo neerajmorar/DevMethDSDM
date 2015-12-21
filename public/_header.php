@@ -16,6 +16,8 @@
                 window.location.reload();
             }
         </script>
+        <script src="scripts/jquery-2.1.4.min.js"></script>
+        <script src="scripts/jquery.validate.min.js"></script>
     </head>
     <body id="body" <?php $urlTest = explode('/', $_GET["url"]); if ($urlTest[1] == "manageEvent") { echo "onbeforeunload='return confirmRefresh()'"; } ?>>
         <header>

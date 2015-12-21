@@ -42,7 +42,7 @@ if (isset($data[1][0]) == false)
                     <label>Event ID: </label> <span class="plain-text"><?php echo $data[1][0]["eventID"]; ?></span>
                 </div>
                 <div class="row-2" id="eventName">
-                    <label>Name:* </label> 
+                    <label>Name:<strong>*</strong> </label> 
 
                     <select id="eventID" onchange="reloadPage()">
                         <?php
@@ -62,7 +62,7 @@ if (isset($data[1][0]) == false)
                     </select>
                 </div>
                 <div class="row-3">
-                    <label>Type:* </label>
+                    <label>Type:<strong>*</strong> </label>
                         <select disabled="disabled" class="editForm" name="eventType">
                             <?php
                                 //create dropdown list of event types
@@ -81,13 +81,13 @@ if (isset($data[1][0]) == false)
                         </select>    
                 </div>
                 <div class="row-4">
-                    <label>Date:* </label> <input class="editForm" name="eventDate" disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" />
+                    <label>Date:<strong>*</strong> </label> <input class="editForm" name="eventDate" disabled="disabled" type="date" value="<?php echo date("Y-m-d", strtotime($data[1][0]["date"])); ?>" required />
                 </div>
                 <div class="row-5">
-                    <label>Description:* </label> <textarea class="editForm" name="eventDesc" disabled="disabled" rows="10" cols="50"><?php echo $data[1][0]["description"]; ?></textarea>
+                    <label>Description:<strong>*</strong> </label> <textarea class="editForm" name="eventDesc" disabled="disabled" rows="10" cols="50" required ><?php echo $data[1][0]["description"]; ?></textarea>
                 </div>
                 <div class="row-6">
-                    <label>Post Material Link: </label> <input class="editForm" name="eventMatLink" disabled="disabled" type="text" value="<?php echo $data[1][0]["postMaterialLink"]; ?>" />
+                    <label>Post Material Link: </label> <input class="editForm" name="eventMatLink" disabled="disabled" type="url" value="<?php echo $data[1][0]["postMaterialLink"]; ?>"  />
                 </div>
                 <div class="row-7">
                     <label>Survey Link: </label> <input disabled="disabled" type="text" value="<?php echo $data[1][0]["surveyLink"]; ?>" disabled="disabled" />
@@ -99,16 +99,16 @@ if (isset($data[1][0]) == false)
             <div class="right-col">
                 <!-- create rows, each row has corresponding row in left column -->
                 <div class="row-1">
-                    <label>Address 1:* </label> <input class="editForm" name="eventAdd1" disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" />
+                    <label>Address 1:<strong>*</strong> </label> <input class="editForm" name="eventAdd1" disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" required />
                 </div>
                 <div class="row-2">
                     <label>Address 2: </label> <input class="editForm" name="eventAdd2" disabled="disabled" type="text" value="<?php echo $data[1][0]["address2"]; ?>" />
                 </div>
                 <div class="row-3">
-                    <label>City:* </label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" />
+                    <label>City:<strong>*</strong> </label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" required />
                 </div>
                 <div class="row-4">
-                    <label>Post Code:* </label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" />
+                    <label>Post Code:<strong>*</strong> </label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" required />
                 </div>
                 <div class="row-5">
                     <label>Total Contributors: </label> <span class="plain-text"><?php echo $data[1][0]["noOfContributors"]; ?></span>
@@ -122,6 +122,8 @@ if (isset($data[1][0]) == false)
 </div>
 
 <script type="text/javascript">
+    $("#manageEventForm").validate();
+    
     //variable which indicates the event is being edited
     var editOn = false;
     
@@ -182,6 +184,7 @@ if (isset($data[1][0]) == false)
         //display the text value
         textInput.setAttribute("value", eventName);
         textInput.setAttribute("name", "eventName");
+        textInput.required = true;
         //get the element which will be parent to textbox
         var parentNode = document.getElementById("eventName");
         //remove the select dropdown list and replace it with the textbox
@@ -227,7 +230,7 @@ if (isset($data[1][0]) == false)
     //executed by save button and displays a message asking to confirm changes
     function saveEvent()
     {
-       document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)"); 
+        document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)"); 
     }
     
     //executed by delete button and displays warning message and then redirects to 
