@@ -22,7 +22,7 @@ require '../public/_header.php';
                 <div class="row-2">
                     <label>Your ID:</label>
                     
-                    <input type="number" />
+                    <input type="number" min="0" />
                 </div>
                 <div class="row-3">
                     <label>Your Abstract:</label>
