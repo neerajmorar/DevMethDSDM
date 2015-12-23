@@ -39,7 +39,7 @@ if (isset($data[1][0]) == false)
             <div class="left-col">
                 <!-- create rows, each row has a corresponding row in right column -->
                 <div class="row-1">
-                    <label>Event ID: </label> <span class="plain-text"><?php echo $data[1][0]["eventID"]; ?></span>
+                    <label>Event ID:</label> <span class="plain-text"><?php echo $data[1][0]["eventID"]; ?></span>
                 </div>
                 <div class="row-2" id="eventName">
                     <label>Name:<strong>*</strong> </label> 
@@ -87,10 +87,10 @@ if (isset($data[1][0]) == false)
                     <label>Description:<strong>*</strong> </label> <textarea class="editForm" name="eventDesc" disabled="disabled" rows="10" cols="50" required ><?php echo $data[1][0]["description"]; ?></textarea>
                 </div>
                 <div class="row-6">
-                    <label>Post Material Link: </label> <input class="editForm" name="eventMatLink" disabled="disabled" type="url" value="<?php echo $data[1][0]["postMaterialLink"]; ?>"  />
+                    <label>Post Material Link:</label> <input class="editForm" name="eventMatLink" disabled="disabled" type="url" value="<?php echo $data[1][0]["postMaterialLink"]; ?>"  />
                 </div>
                 <div class="row-7">
-                    <label>Survey Link: </label> <input disabled="disabled" type="text" value="<?php echo $data[1][0]["surveyLink"]; ?>" disabled="disabled" />
+                    <label>Survey Link:</label> <input disabled="disabled" type="text" value="<?php echo $data[1][0]["surveyLink"]; ?>" disabled="disabled" />
                 </div>
             </div>
             <!-- creates a "whitespace" between left and right column -->
@@ -102,19 +102,19 @@ if (isset($data[1][0]) == false)
                     <label>Address 1:<strong>*</strong> </label> <input class="editForm" name="eventAdd1" disabled="disabled" type="text" value="<?php echo $data[1][0]["address1"]; ?>" required />
                 </div>
                 <div class="row-2">
-                    <label>Address 2: </label> <input class="editForm" name="eventAdd2" disabled="disabled" type="text" value="<?php echo $data[1][0]["address2"]; ?>" />
+                    <label>Address 2:</label> <input class="editForm" name="eventAdd2" disabled="disabled" type="text" value="<?php echo $data[1][0]["address2"]; ?>" />
                 </div>
                 <div class="row-3">
-                    <label>City:<strong>*</strong> </label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" required />
+                    <label>City:<strong>*</strong></label> <input class="editForm" name="eventCity" disabled="disabled" type="text" value="<?php echo $data[1][0]["city"]; ?>" required />
                 </div>
                 <div class="row-4">
-                    <label>Post Code:<strong>*</strong> </label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" required />
+                    <label>Post Code:<strong>*</strong></label> <input class="editForm" name="eventPostCode" disabled="disabled" type="text" value="<?php echo $data[1][0]["postCode"]; ?>" required />
                 </div>
                 <div class="row-5">
-                    <label>Total Contributors: </label> <span class="plain-text"><?php echo $data[1][0]["noOfContributors"]; ?></span>
+                    <label>Total Contributors:</label> <span class="plain-text"><?php echo $data[1][0]["noOfContributors"]; ?></span>
                 </div>
                 <div class="row-6">
-                    <label>Total Audience Members: </label> <span class="plain-text"><?php echo $data[1][0]["noOfAudienceMembers"]; ?></span>
+                    <label>Total Audience Members:</label> <span class="plain-text"><?php echo $data[1][0]["noOfAudienceMembers"]; ?></span>
                 </div>
             </div>
         </div>

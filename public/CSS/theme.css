@@ -63,7 +63,7 @@ h3 {
 }
 
 /* Styles text input */
-input[type=text], input[type=url]
+input[type=text], input[type=url], input[type=number], input[type=file]
 {
     /*border: 1px solid #dbd6d6;*/
     border-radius: 2.5px;

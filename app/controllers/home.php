@@ -162,5 +162,8 @@ class Home extends Controller
         
     }
     
-  
+    public function submitAbstract()
+    {
+        $this->view("submitAbstract");
+    }
 }
