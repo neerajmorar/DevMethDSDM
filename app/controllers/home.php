@@ -164,6 +164,49 @@ class Home extends Controller
     
     public function submitAbstract()
     {
-        $this->view("submitAbstract");
+        if (!empty($_POST["eventID"]) && !empty($_POST["contributorID"]) && !empty($_POST["abstract"]))
+        {
+            $abstract = $this->model("Abstracts");
+            
+            if (!empty($_FILES["attachment"]) && ($_FILES["attachment"]["error"] == 0))
+            {
+                $fileName = $_FILES["attachment"]['name'];
+                $tmpName  = $_FILES["attachment"]['tmp_name'];
+                $fileSize = $_FILES["attachment"]['size'];
+                $fileType = $_FILES["attachment"]['type'];
+
+                $fp = fopen($tmpName, 'r');
+                $content = fread($fp, filesize($tmpName));
+                //$content = addslashes($content);
+                fclose($fp);
+                
+                if(!get_magic_quotes_gpc())
+                {
+                    $fileName = addslashes($fileName);
+                }
+                
+                $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"], 
+                        $content, $fileName, $fileType, $fileSize);
+            }
+            else
+            {
+                $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"]);
+            }
+            
+            die(header("location: index.php?url=home/submitAbstract"));
+        }
+        
+        $event = $this->model("Event");
+        
+        $event->showListOfEvents();
+        
+        $this->view("submitAbstract", $event->eventList);
+    }
+    
+    public function test()
+    {
+        $abstract = $this->model("Abstracts");
+        
+        $abstract->downloadAbstract();
     }
 }
