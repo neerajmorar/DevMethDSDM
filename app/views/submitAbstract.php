@@ -9,13 +9,15 @@ require '../public/_header.php';
 <div id="content">
     <h2><?php echo $pageTitle; ?></h2>
     
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" id="submitAbstractForm" onsubmit="return formSubmission()" >
         <input type="submit" value="Submit" />
+        <p id="reqFields"><strong>* Required fields</strong></p>
+        
         <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
         <div class="table-layout">
             <div class="left-col">
                 <div class="row-1">
-                    <label>Select Event:</label>
+                    <label>Select Event:<strong>*</strong></label>
                     
                     <select name="eventID">
                         <?php
@@ -27,15 +29,15 @@ require '../public/_header.php';
                     </select>
                 </div>
                 <div class="row-2">
-                    <label>Your ID:</label>
+                    <label>Your ID:<strong>*</strong></label>
                     
-                    <input name="contributorID" type="number" min="0" />
+                    <input name="contributorID" type="number" min="0" required />
                 </div>
                 <div class="row-3">
-                    <label>Your Abstract (Max 500 Words: <span id="wordCount"></span>): </label> 
+                    <label>Your Abstract (Max 500 Words: <span id="wordCount"></span>):<strong>*</strong> </label> 
                     
                     
-                    <textarea name="abstract" rows="10" cols="50"></textarea>
+                    <textarea name="abstract" rows="10" cols="50" required ></textarea>
                 </div>
             </div>
             <div class="right-col">
@@ -50,6 +52,8 @@ require '../public/_header.php';
 </div>
 
 <script type="text/javascript">
+    $("#submitAbstractForm").validate();
+    
     history.pushState('', '', "index.php?url=home/submitAbstract/");
     
     var confirmType = "<?php echo $data[1]; ?>";
@@ -82,8 +86,18 @@ require '../public/_header.php';
         if (c.words > 500)
         {
             window.alert("Your abstract is over 500 words, please shorten it!");
+            valid = false;
         }
-    });   
+        else
+        {
+            valid = true;
+        }
+    });
+    
+    function formSubmission()
+    {
+        return valid;
+    }
 </script>
 
 </body>
