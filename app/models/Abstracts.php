@@ -8,7 +8,7 @@ class Abstracts
 {
     private $connection;
     private $result;
-    public $confirmation;
+    public $confirmation = null;
     
     public function insertAbstract($contributorID, $eventID, $abstract, $attachment = null, $name = null, $type = null, $size = null)
     {
@@ -30,7 +30,7 @@ class Abstracts
         $query->close();
         
         
-        if (!empty($attachment))
+        if (!empty($attachment) && $abstractID != -1)
         {
             $query = $this->connection->prepare("CALL sp_PopulateAbstractAttachments(?,?,?,?,?)");
             $query->bind_param("isssi", $abstractID, $attachment, $name, $type, $size) or die(mysqli_error($this->connection));
@@ -38,6 +38,15 @@ class Abstracts
             $query->execute() or die(mysqli_error($this->connection));
             
             $query->close();
+        }
+        
+        if ($abstractID != -1)
+        {
+            $this->confirmation = 'a';
+        }
+        else if ($abstractID == -1)
+        {
+            $this->confirmation = 'b';
         }
         
         mysqli_close($this->connection);

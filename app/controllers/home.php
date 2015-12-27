@@ -162,7 +162,7 @@ class Home extends Controller
         
     }
     
-    public function submitAbstract()
+    public function submitAbstract($confirmation = null)
     {
         if (!empty($_POST["eventID"]) && !empty($_POST["contributorID"]) && !empty($_POST["abstract"]))
         {
@@ -193,14 +193,14 @@ class Home extends Controller
                 $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"]);
             }
             
-            die(header("location: index.php?url=home/submitAbstract"));
+            die(header("location: index.php?url=home/submitAbstract/" . $abstract->confirmation));
         }
         
         $event = $this->model("Event");
         
         $event->showListOfEvents();
         
-        $this->view("submitAbstract", $event->eventList);
+        $this->view("submitAbstract", array($event->eventList, $confirmation));
     }
     
     public function test()
