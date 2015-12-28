@@ -31,7 +31,7 @@ require '../public/_header.php';
                 <div class="row-2">
                     <label>Your ID:<strong>*</strong></label>
                     
-                    <input name="contributorID" type="number" min="0" required />
+                    <input name="contributorID" type="number" min="1" required />
                 </div>
                 <div class="row-3">
                     <label>Your Abstract (Max 500 Words: <span id="wordCount">0</span>):<strong>*</strong> </label> 
