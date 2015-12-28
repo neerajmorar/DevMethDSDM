@@ -34,7 +34,7 @@ require '../public/_header.php';
                     <input name="contributorID" type="number" min="0" required />
                 </div>
                 <div class="row-3">
-                    <label>Your Abstract (Max 500 Words: <span id="wordCount"></span>):<strong>*</strong> </label> 
+                    <label>Your Abstract (Max 500 Words: <span id="wordCount">0</span>):<strong>*</strong> </label> 
                     
                     
                     <textarea name="abstract" rows="10" cols="50" required ></textarea>
@@ -45,6 +45,9 @@ require '../public/_header.php';
                     <label>Attachment:</label>
 
                     <input type="file" name="attachment" />
+                </div>
+                <div class="row-2">
+                    <p><strong>Valid file types .jpg, .png, .pdf, .docx, .doc, .ppt, .pptx (Max: 2MB)</strong></p>
                 </div>
             </div>
         </div>        
@@ -65,6 +68,10 @@ require '../public/_header.php';
     else if (confirmType === "b")
     {
         window.alert("Abstract submission failed.");
+    }
+    else if (confirmType === "c")
+    {
+        window.alert("Abstract submission failed; invalid file uploaded.");
     }
     
     function wordCount(val)

@@ -175,18 +175,28 @@ class Home extends Controller
                 $fileSize = $_FILES["attachment"]['size'];
                 $fileType = $_FILES["attachment"]['type'];
 
-                $fp = fopen($tmpName, 'r');
-                $content = fread($fp, filesize($tmpName));
-                //$content = addslashes($content);
-                fclose($fp);
+                $ext = strtolower(substr($fileName, strrpos($fileName, '.') + 1));
+                $validExt = array("jpg", "png", "docx", "doc", "pdf", "ppt", "pptx");
                 
-                if(!get_magic_quotes_gpc())
+                if (in_array($ext, $validExt) && $fileSize <= 2000000)
                 {
-                    $fileName = addslashes($fileName);
+                    $fp = fopen($tmpName, 'r');
+                    $content = fread($fp, filesize($tmpName));
+                    //$content = addslashes($content);
+                    fclose($fp);
+
+                    if(!get_magic_quotes_gpc())
+                    {
+                        $fileName = addslashes($fileName);
+                    }
+
+                    $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"], 
+                            $content, $fileName, $fileType, $fileSize);
                 }
-                
-                $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"], 
-                        $content, $fileName, $fileType, $fileSize);
+                else
+                {
+                    die(header("location: index.php?url=home/submitAbstract/c"));
+                }
             }
             else
             {
