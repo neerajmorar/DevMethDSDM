@@ -137,14 +137,19 @@ class Home extends Controller
         
     }
     
+    //handles the submission of abstracts by contributors
     public function submitAbstract($confirmation = null)
     {
+        //check if form has been submitted
         if (!empty($_POST["eventID"]) && !empty($_POST["contributorID"]) && !empty($_POST["abstract"]))
         {
+            //object of Abstracts class
             $abstract = $this->model("Abstracts");
             
+            //validates any attached files
             if (!empty($_FILES["attachment"]) && ($_FILES["attachment"]["error"] == 0))
             {
+                //build properties of uploaded file
                 $fileName = $_FILES["attachment"]['name'];
                 $tmpName  = $_FILES["attachment"]['tmp_name'];
                 $fileSize = $_FILES["attachment"]['size'];
@@ -153,8 +158,10 @@ class Home extends Controller
                 $ext = strtolower(substr($fileName, strrpos($fileName, '.') + 1));
                 $validExt = array("jpg", "png", "docx", "doc", "pdf", "ppt", "pptx");
                 
+                //check if extension of upload is valid
                 if (in_array($ext, $validExt) && $fileSize <= 2000000)
                 {
+                    //read file
                     $fp = fopen($tmpName, 'r');
                     $content = fread($fp, filesize($tmpName));
                     //$content = addslashes($content);
@@ -165,19 +172,23 @@ class Home extends Controller
                         $fileName = addslashes($fileName);
                     }
 
+                    //upload file to database
                     $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"], 
                             $content, $fileName, $fileType, $fileSize);
                 }
                 else
                 {
+                    //pass paramater c to produce message saying invalid file
                     die(header("location: index.php?url=home/submitAbstract/c"));
                 }
             }
             else
             {
+                //file not uploaded, but abstract submitted
                 $abstract->insertAbstract($_POST["contributorID"], $_POST["eventID"], $_POST["abstract"]);
             }
             
+            //return to page passing appropriate confirmation paramater about abstract submission
             die(header("location: index.php?url=home/submitAbstract/" . $abstract->confirmation));
         }
         
