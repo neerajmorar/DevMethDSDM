@@ -219,4 +219,20 @@ class Home extends Controller
         
         $abstract->downloadAbstract();
     }
+    
+    public function inviteContributor() 
+    {
+        
+        $event = $this->model("Event");
+        
+        $event->showListOfEvents();
+        
+        if (!empty($_POST["cemail"]))
+        {
+            $contributor = $this->model("Contributor"); 
+            $contributor->sendInvite();
+        }
+        
+        $this->view("inviteContributor", array($event->eventList));
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 //retrieves MySQL connection
-require_once '../app/credentials.php';
+require '../app/credentials.php';
 
 //model class used to handle data relating to Abstract
 //plural because Abstract is a PHP keyword

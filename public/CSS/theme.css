@@ -81,7 +81,7 @@ input[type=date]
     width: 50%;
 }
 
-input[type=button], input[type=submit]
+input[type=button], input[type=submit], input[type=reset]
 {
     text-decoration: none;
     color: #000;
@@ -92,7 +92,7 @@ input[type=button], input[type=submit]
     width: 164px;
 }
 
-input[type=button]:hover, input[type=submit]:hover 
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover
 {
     color: #FFF;
     background-color: #0d5a99;
