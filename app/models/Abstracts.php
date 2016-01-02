@@ -1,7 +1,4 @@
 <?php
-//retrieves MySQL connection
-//require '../app/credentials.php';
-
 //model class used to handle data relating to Abstract
 //plural because Abstract is a PHP keyword
 class Abstracts

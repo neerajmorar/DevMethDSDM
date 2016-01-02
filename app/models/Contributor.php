@@ -1,7 +1,4 @@
 <?php
-//retrieves MySQL connection
-//require '../app/credentials.php';
-
 class Contributor
 {
     private $connection;

@@ -4,7 +4,7 @@
 class App 
 {
     protected $controller = 'home';
-    protected $method = 'index';
+    protected $method = 'createEvent';
     protected $params = array();
     
     public function __construct() 

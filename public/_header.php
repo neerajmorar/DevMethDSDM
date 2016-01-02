@@ -19,6 +19,6 @@
         <script src="scripts/jquery-2.1.4.min.js"></script>
         <script src="scripts/jquery.validate.min.js"></script>
     </head>
-    <body id="body" <?php $urlTest = explode('/', $_GET["url"]); if ($urlTest[1] == "manageEvent") { echo "onbeforeunload='return confirmRefresh()'"; } ?>>
+    <body id="body" <?php if (isset($_GET["url"])) { $urlTest = explode('/', $_GET["url"]); if ($urlTest[1] == "manageEvent") { echo "onbeforeunload='return confirmRefresh()'"; }} ?>>
         <header>
             <h1 id="heading">AEMS</h1>
