@@ -222,14 +222,14 @@ class Home extends Controller
     
     public function inviteContributor() 
     {
-        
+        $contributor = $this->model("Contributor");
         $event = $this->model("Event");
         
         $event->showListOfEvents();
         
         if (!empty($_POST["cemail"]))
         {
-            $contributor = $this->model("Contributor"); 
+             
             $contributor->sendInvite();
         }
         

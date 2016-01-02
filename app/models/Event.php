@@ -1,6 +1,6 @@
 <?php
 //retrieves MySQL connection
-require '../app/credentials.php';
+//require '../app/credentials.php';
 
 //model class used to handle data relating to Events
 class Event
