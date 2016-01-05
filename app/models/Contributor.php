@@ -15,8 +15,8 @@ class Contributor
     
     public function sendInvite()
     {
+        $to = $_POST['inf'];
         $event = $_POST['event'];
-        $emails = $_POST['emails'];
         $etype = $_POST['etype'];
         $semail = $_POST['semail'];
         $subject = $_POST['subject'];
@@ -25,7 +25,11 @@ class Contributor
         $message = $_POST['message'];
         $esignature = $_POST['esignature'];
 
-        mail($emails, $event, $etype, $semail, $subject, $greeting, $attach, $message, $esignature);
+    if($_POST){
+	mail($to, $event, $etype, $semail, $subject, $greeting, $attach, $message, $esignature);
+	$feedback = 'Email has been sent';
     }
 }
+}
 
+?>

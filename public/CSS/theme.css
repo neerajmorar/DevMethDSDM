@@ -193,3 +193,11 @@ label
     box-sizing: border-box;
     /*border: 1px solid black;*/
 }
+
+.error
+{
+	color:red;
+	font-style: italic;
+	font-size: 15px;
+	visibility: hidden;
+}

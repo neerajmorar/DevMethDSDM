@@ -206,7 +206,7 @@ class Home extends Controller
         $abstract->downloadAbstract();
     }
     
-    public function inviteContributor() 
+    public function inviteContributors() 
     {
         $contributor = $this->model("Contributor");
         $event = $this->model("Event");
