@@ -75,7 +75,7 @@ require '../public/_header.php';
                         </div>
                         <div class='row-4'>
                             <label>Email Signature:</label>
-                            <textarea rows='10' cols='50' name="esignature" id="esignature" ></textarea>
+                            <textarea rows='4' cols='50' name="esignature" id="esignature" ></textarea>
                             <span id="errsig" class="error">This is required</span>
                         </div>
                     </div>
