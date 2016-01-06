@@ -7,8 +7,8 @@ require '../public/_header.php';
 
 <div id="content">
     <h2><?php echo $pageTitle; ?></h2>
-    <p id="feedback"><?php echo $feedback; ?></p>
-    <form id="myForm" name="myForm" onsubmit=" method="POST" action="form_script.php" >
+    <p id="feedback"><?php if(isset($data[1])) { echo $data[1]; } ?></p>
+    <form id="myForm" name="myForm" onsubmit="" method="POST">
 			
         <input type='reset' value='Clear Form' />
         <input type='submit' value='Send Email' onclick="return validate();" />

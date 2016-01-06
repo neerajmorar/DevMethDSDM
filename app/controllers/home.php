@@ -221,4 +221,22 @@ class Home extends Controller
         
         $this->view("inviteContributors", array($event->eventList));
     }
+    
+    public function inviteAudience($feedback = null)
+    {
+        if (!empty($_POST["event"]) && !empty($_POST["inf"])
+                && $_POST["etype"] != 0 && !empty($_POST["semail"]) && !empty($_POST["subject"])
+                && !empty($_POST["greeting"]) && !empty($_POST["message"]) && !empty($_POST["esignature"]))
+        {
+            $audienceMember = $this->model("AudienceMember");
+            $audienceMember->sendInvite($_POST["inf"], $_POST["event"], $_POST["etype"], $_POST["semail"],
+                    $_POST["subject"], $_POST["greeting"], $_POST["message"], $_POST["esignature"]);
+            die(header("location: index.php?url=home/inviteAudience/" . $audienceMember->feedback));
+        }
+        
+        $event = $this->model("Event");
+        $event->showListOfEvents();
+        
+        $this->view("inviteAudience", array($event->eventList, $feedback));
+    }
 }
