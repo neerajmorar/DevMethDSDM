@@ -206,21 +206,25 @@ class Home extends Controller
         $abstract->downloadAbstract();
     }
     
-    public function inviteContributors() 
+    public function inviteContributors($feedback = null) 
     {
-        $contributor = $this->model("Contributor");
-        $event = $this->model("Event");
-        
-        $event->showListOfEvents();
-        
-        if (!empty($_POST["cemail"]))
+        if (!empty($_POST["event"]) && !empty($_POST["inf"])
+                && $_POST["etype"] != 0 && !empty($_POST["semail"]) && !empty($_POST["subject"])
+                && !empty($_POST["greeting"]) && !empty($_POST["message"]) && !empty($_POST["esignature"]))
         {
-             
-            $contributor->sendInvite();
+        $contributor = $this->model("Contributor");
+        $contributor->sendInvite($_POST["inf"], $_POST["event"], $_POST["etype"], $_POST["semail"],
+                    $_POST["subject"], $_POST["greeting"], $_POST["message"], $_POST["esignature"]);
+            die(header("location: index.php?url=home/inviteAudience/" . $contributor->feedback));
         }
+        
+        $event = $this->model("Event");
+        $event->showListOfEvents();
         
         $this->view("inviteContributors", array($event->eventList));
     }
+    
+    
     
     public function inviteAudience($feedback = null)
     {
