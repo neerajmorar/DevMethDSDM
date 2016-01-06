@@ -1,5 +1,5 @@
 <?php
-$pageTitle = 'Invite Contributor';
+$pageTitle = 'Invite Contributors';
 require '../public/_header.php';
 ?>
 
