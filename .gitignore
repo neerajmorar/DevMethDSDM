@@ -13,3 +13,5 @@ nbproject/private/private.properties
 app/views/createEvent.php
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
+app/views/InviteAudience.php
+app/views/InviteContributors.php
