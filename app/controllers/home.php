@@ -219,6 +219,6 @@ class Home extends Controller
             $contributor->sendInvite();
         }
         
-        $this->view("inviteContributor", array($event->eventList));
+        $this->view("inviteContributors", array($event->eventList));
     }
 }

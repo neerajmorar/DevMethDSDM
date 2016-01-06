@@ -25,11 +25,12 @@ class Contributor
         $message = $_POST['message'];
         $esignature = $_POST['esignature'];
 
-    if($_POST){
-	mail($to, $event, $etype, $semail, $subject, $greeting, $attach, $message, $esignature);
-	$feedback = 'Email has been sent';
+        if($_POST)
+        {
+            mail($to, $event, $etype, $semail, $subject, $greeting, $attach, $message, $esignature);
+            $feedback = 'Email has been sent';
+        }
     }
-}
 }
 
 ?>
