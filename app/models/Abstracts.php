@@ -34,8 +34,14 @@ class Abstracts
         if (!empty($attachment) && $abstractID != -1)
         {
             //execute stored proc. to upload attachment
+            $null = null;
+            
             $query = $this->connection->prepare("CALL sp_PopulateAbstractAttachments(?,?,?,?,?)");
-            $query->bind_param("isssi", $abstractID, $attachment, $name, $type, $size) or die(mysqli_error($this->connection));
+            $query->bind_param("ibssi", $abstractID, $null, $name, $type, $size) or die(mysqli_error($this->connection));
+            foreach (str_split($attachment, 10240) as $chunk)
+            {
+                $query->send_long_data(1, $chunk);
+            }
 
             $query->execute() or die(mysqli_error($this->connection));
             
