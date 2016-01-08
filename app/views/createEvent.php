@@ -18,13 +18,16 @@ require '../public/_header.php';
             
     <form id='eventSetup' method='POST' action='index.php?url=home/eventSetup'>
         
-         <div class="table-layout">
+        <input type='submit' value='Submit'/>
+        <input type='button' value='Reset' onclick='clearForm()' />
+        
+        <div class="table-layout">
              
-             <div class="left-col">
+            <div class="left-col">
                 
                 <div class="row-1">
                     <label>Name:*</label>
-                    <input type='text' name='eventName' placeholder='Event Name' value='<?php if(isset($_POST['eventName'])){ echo $_POST['eventName'];}?>'>
+                    <input type='text' name='eventName' placeholder='Event Name' value='<?php if(isset($_SESSION['eventName'])){ echo $_SESSION['eventName'];}?>'>
                     <p><?php if(isset($errors["eventName"])){ echo $errors["eventName"];}?></p>
                 </div>
                 
@@ -40,9 +43,7 @@ require '../public/_header.php';
 
                 <div class="row-3">
                     <label>Date:*</label>
-                    <label>(YYYY-MM-DD)</label>
-                    <input type='date' name='eventDate' placeholder='Event Date'>
-                    <?php echo date('Y-m-d', "12/12/15"); ?>
+                    <input type='date' name='eventDate'>
                 </div>
                     
                 <div class="row-4">
@@ -72,10 +73,6 @@ require '../public/_header.php';
                     <label>Description:*</label>
                     <textarea name='description' id='desc' rows='10' cols='50' placeholder='Description'></textarea>
                 </div>
-
-                <input type='submit' value='Submit'/>
-                <input type='button' value='Reset' onclick='clearForm()' />
-                <input type='button' value='Save'>
             </div>
             </div>
         

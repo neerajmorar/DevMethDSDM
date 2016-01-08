@@ -138,14 +138,14 @@ class Event
         mysqli_close($this->connection);
     }
     
-    public function registerEvent($eventName, $eventType, $eventDate, $address1, $address2, $city, $postcode, $description)
+    // inserts data into Event table 
+    public function registerEvent($eventType, $eventName, $eventDate, $address1, $address2, $city, $postcode, $description)
     {
         //instantiates connection object from credentials.php
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
-        $query = 'INSERT INTO event (type, name, date, noOfContributors, noOfAudienceMembers, address1, address2, city, postCode, postMaterialLink, surveyLink, description)'
-                . 'VALUES("$eventName", "$eventType", "$eventDate", "$noOfContributors", "$noOfAudienceMembers", "$address1", "$address2", "$city", "$postcode", " ", " ", "$description")';
+        $query = 'INSERT INTO event VALUES("$eventType", "$eventName", "$eventDate", "$noOfContributors", "$noOfAudienceMembers", "$address1", "$address2", "$city", "$postcode", " ", " ", "$description")';
         
         $this->result = mysqli_query($this->connection, $query);
         
@@ -158,9 +158,27 @@ class Event
         mysqli_close($this->connection);
     }
     
-    public function viewEventConfirmation()
+    // inserting data for presentation submission
+    public function submitPresentation($userID, $eventType, $upload)
     {
+        //instantiates connection object from credentials.php
+        $conn = new Credentials;
+        $this->connection = $conn->conn;
+        
+        $query = 'INSERT INTO abstract VALUES("$userID", "$eventType", "$upload")';
+        
+        $this->result = mysqli_query($this->connection, $query);
+        
+        while (($row = mysqli_fetch_assoc($this->result)) != false)
+        {
+            $this->events[] = $row;
+        }
+        
+        mysqli_free_result($this->result);
+        mysqli_close($this->connection);
         
     }
+    
+
 }
 
