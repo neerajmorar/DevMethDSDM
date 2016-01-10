@@ -35,9 +35,13 @@ require '../public/_header.php';
                     <label>Type:*</label>
                     <select name='eventType'>
                     <option value='empty'>Select</option>
-                    <option value='1'><?php echo $data[0]['typeDescription']; ?></option>
-                    <option value='2'><?php echo $data[1]['typeDescription']; ?></option>
-                    <option value='3'><?php echo $data[2]['typeDescription']; ?></option>
+                    <?php
+                        //create dropdown list of event types
+                        foreach($data as $e)
+                        {
+                            echo "<option value='" . $e["typeID"] . "'>" . $e["typeDescription"] ."</option>";
+                        }
+                    ?>
                     </select>
                 </div>
 
