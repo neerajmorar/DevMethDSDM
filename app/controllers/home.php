@@ -80,6 +80,7 @@ class Home extends Controller
         // need validation for event type
         if ($_POST['eventType'] == 'empty')
         {
+            ///
             $eventValidation = false; 
         }
 
@@ -126,15 +127,61 @@ class Home extends Controller
         else
         {
             $eventSetup = $this->model('Event');
-            $eventSetup->registerEvent($_POST['eventName'], $_POST['eventType'], $_POST['eventDate'], $_POST['address1'], $_POST['address2'], $_POST['city'], $_POST['postcode'], $_POST['description']);
+            $eventSetup->registerEvent($_POST['eventType'], $_POST['eventName'], $_POST['eventDate'], $_POST['address1'], $_POST['address2'], $_POST['city'], $_POST['postcode'], $_POST['description']);
             $this->view('setupConfirmation', $eventSetup->events);
         }
     }
     
-    //validates submission of the presentation
+    public function submitPresentation()
+    {
+        $event = $this->model("Event");
+        
+        $event->getEventTypes();
+        
+        $this->view('submitPresentation', $event->eventTypes); 
+    }
+    
+    
+    public function presentationSub()
+    {
+        $submissionValidation = true; 
+        
+        
+        //checking if the field is empty 
+        if(empty($_POST['userID']))
+        { 
+          $submissionValidation = false;    
+        }
+        
+        // need validation for event type
+       // if (empty($_FILES['upload']['name'])) {
+        //    $submissionValidation = false;
+       // }
+        
+
+        if ($submissionValidation == false) 
+        {     
+            header('Location:index.php?url=home/submitPresentation');  
+            exit();
+        }
+        else
+        {
+            $presentation = $this->model('Event');
+            $presentation->submitPresentation($_POST['userID'], $_POST['eventType'], $_FILES['upload']);
+            $this->view('presentationSubmission', $presentation->events);
+        }
+        
+    }
+    
+    //redirects to webpage with confirmation of submission 
     public function presentationSubmission()
     {
+      $event = $this->model("Event");
         
+      $event->getEventTypes();
+        
+      $this->view('presentationSubmission', $event->eventTypes); 
+
     }
     
     //handles the submission of abstracts by contributors
