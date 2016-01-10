@@ -15,5 +15,3 @@ app/views/createEvent.php
 >>>>>>> Stashed changes
 app/views/InviteAudience.php
 app/views/InviteContributors.php
-app/views/InviteAudience.php
-app/views/InviteContributors.php
