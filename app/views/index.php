@@ -21,6 +21,9 @@ require '../public/_header.php';
                 <div class="row-3">
                     <input class="homePage" type="button" value="Submit Abstract" onclick="location.href='index.php?url=home/submitAbstract'" />
                 </div>
+                <div class="row-4">
+                    <input class="homePage" type="button" value="Review Presentation" onclick="location.href='index.php?url=home/reviewPresentation'" />
+                </div>
             </div>
             <div class="table-space"></div>
             <div class="right-col">

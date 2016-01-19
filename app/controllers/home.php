@@ -295,4 +295,9 @@ class Home extends Controller
         
         $this->view("inviteAudience", array($event->eventList, $feedback));
     }
+    
+    public function reviewPresentation()
+    {
+        $this->view("reviewPresentation");
+    }
 }
