@@ -4,6 +4,11 @@ session_start();
 //child class used to display home page and products for sale
 class Home extends Controller 
 {
+    public function index()
+    {
+        $this->view("index");
+    }
+            
     public function manageEvent($eventID = null)
     {
         //avoiding SQL injection; accepts null parameter

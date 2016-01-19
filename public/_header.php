@@ -21,4 +21,4 @@
     </head>
     <body id="body" <?php if (isset($_GET["url"])) { $urlTest = explode('/', $_GET["url"]); if ($urlTest[1] == "manageEvent") { echo "onbeforeunload='return confirmRefresh()'"; }} ?>>
         <header>
-            <h1 id="heading">AEMS</h1>
+            <h1 id="heading"><a href="index.php">AEMS</a></h1>

@@ -99,6 +99,13 @@ input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover
     border: 1px solid #0d5a99;
 }
 
+.homePage
+{
+    width: 100% !important;
+    /*margin-left: 200px;*/
+    font-size: larger;
+}
+
 select, option
 {
     /*border: 1px solid #dbd6d6;*/
