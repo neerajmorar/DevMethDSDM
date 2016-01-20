@@ -90,6 +90,7 @@ input[type=button], input[type=submit], input[type=reset]
     border-radius: 5px;
     background-color: #FFF;
     width: 164px;
+    cursor: pointer;
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover

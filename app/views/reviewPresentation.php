@@ -9,7 +9,16 @@ require '../public/_header.php';
 <div id="content">
     <h2><?php echo $pageTitle; ?></h2>
     
-    <iframe src="http://docs.google.com/gview?url=http://people.apache.org/~sctemme/ApconEU2008/Performance_Out.pptx&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+    <form method="post">
+        <div class="table-layout">
+            <div class="left-col"></div>
+            <div class="right-col">
+                <div class="row-1">
+                    <iframe src="http://docs.google.com/gview?url=http://52.30.7.198/public/presentation<?php echo $data; ?>&embedded=true" style="width:100%; height:700px;" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>
