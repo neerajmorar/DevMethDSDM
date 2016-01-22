@@ -298,10 +298,15 @@ class Home extends Controller
     
     public function reviewPresentation()
     {
+        $event = $this->model("Event");
+        $event->showListOfEvents();
+        
         $eventContributor = $this->model("EventContributor");
+        
+        $eventContributor->getEventContributors(6);
         
         $eventContributor->createPresentation();
         
-        $this->view("reviewPresentation", $eventContributor->presentationType);
+        $this->view("reviewPresentation", array($event->eventList, $eventContributor->eventContributors, $eventContributor->presentationType));
     }
 }
