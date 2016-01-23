@@ -16,11 +16,10 @@ require '../public/_header.php';
                     <label>Select Event:</label>
                     
                     <select id="eventID" onchange="loadContributors()">
-                        <option value="0">Please select...</option>
-                        
                         <?php 
                             if (!empty($data[0]))
                             {
+                                echo "<option value='0'>Please select...</option>";
                                 foreach($data[0] as $e)
                                 {
                                     if ($data[3] == $e["eventID"])
@@ -33,6 +32,10 @@ require '../public/_header.php';
                                     }
                                 }
                             }
+                            else
+                            {
+                                echo "<option value'0'>No events found</option>";
+                            }
                         ?>
                     </select>
                 </div>
@@ -40,11 +43,10 @@ require '../public/_header.php';
                     <label>Select Contributor:</label>
                     
                     <select id="contributorID" onchange="loadPresentation()">
-                        <option value="0">Please select...</option>
-                        
                         <?php
                             if(!empty($data[1]))
                             {
+                                echo "<option value='0'>Please select...</option>";
                                 foreach($data[1] as $e)
                                 {
                                     if ($data[4] == $e["contributorID"])
@@ -56,6 +58,10 @@ require '../public/_header.php';
                                         echo "<option value='" . $e["contributorID"] . "'>" . $e["firstName"] . " " . $e["lastName"] . "</option>";
                                     }
                                 }
+                            }
+                            else
+                            {
+                                echo "<option value='0'>No contributors found</option>";
                             }
                         ?>
                     </select>

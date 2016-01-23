@@ -38,7 +38,7 @@ class EventContributor
         $query = "SELECT a.eventID, a.contributorID, b.firstName, b.lastName "
                 . "FROM eventcontributor a "
                 . "INNER JOIN contributor b ON a.contributorID = b.contributorID "
-                . "WHERE a.eventID = $eventID and a.presentation IS NOT NULL";
+                . "WHERE a.eventID = $eventID and a.presentation IS NOT NULL and a.attendingStatus = 0";
         
         $this->result = mysqli_query($this->connection, $query);
         
