@@ -8,12 +8,12 @@ class EventContributor
     public $presentationType;
     public $eventContributors = array();
     
-    public function createPresentation()
+    public function createPresentation($eventID, $contributorID)
     {
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
-        $query = "SELECT presentation, presentationType FROM EventContributor WHERE eventID = 6 and contributorID = 2";
+        $query = "SELECT presentation, presentationType FROM EventContributor WHERE eventID = $eventID and contributorID = $contributorID";
         
         $this->result = mysqli_query($this->connection, $query);
         

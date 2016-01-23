@@ -15,7 +15,7 @@ require '../public/_header.php';
                 <div class="row-1">
                     <label>Select Event:</label>
                     
-                    <select>
+                    <select id="eventID" onchange="loadContributors()">
                         <option value="0">Please select...</option>
                         
                         <?php 
@@ -23,7 +23,14 @@ require '../public/_header.php';
                             {
                                 foreach($data[0] as $e)
                                 {
-                                    echo "<option value='" . $e["eventID"] . "'>" . $e["name"] . "</option>";
+                                    if ($data[3] == $e["eventID"])
+                                    {
+                                        echo "<option selected='selected' value='" . $e["eventID"] . "'>" . $e["name"] . "</option>";
+                                    }
+                                    else
+                                    {
+                                        echo "<option value='" . $e["eventID"] . "'>" . $e["name"] . "</option>";
+                                    }
                                 }
                             }
                         ?>
@@ -32,7 +39,7 @@ require '../public/_header.php';
                 <div class="row-2">
                     <label>Select Contributor:</label>
                     
-                    <select>
+                    <select id="contributorID" onchange="loadPresentation()">
                         <option value="0">Please select...</option>
                         
                         <?php
@@ -40,7 +47,14 @@ require '../public/_header.php';
                             {
                                 foreach($data[1] as $e)
                                 {
-                                    echo "<option value='" . $e["contributorID"] . "'>" . $e["firstName"] . " " . $e["lastName"] . "</option>";
+                                    if ($data[4] == $e["contributorID"])
+                                    {
+                                        echo "<option selected='selected' value='" . $e["contributorID"] . "'>" . $e["firstName"] . " " . $e["lastName"] . "</option>";
+                                    }
+                                    else
+                                    {
+                                        echo "<option value='" . $e["contributorID"] . "'>" . $e["firstName"] . " " . $e["lastName"] . "</option>";
+                                    }
                                 }
                             }
                         ?>
@@ -56,6 +70,28 @@ require '../public/_header.php';
         </div>
     </form>
 </div>
+
+<script type="text/javascript">
+    function loadContributors()
+    {
+        //gets event id value of selected option in select list
+        var e = document.getElementById("eventID");
+        var eventID = e.options[e.selectedIndex].value;
+        
+        //refresh the page passing in the event id value as parameter
+        window.location.assign((window.location.pathname) + "?url=home/reviewPresentation/" + eventID);
+    }
+    
+    function loadPresentation()
+    {
+        //gets event id value of selected option in select list
+        var e = document.getElementById("contributorID");
+        var eventID = e.options[e.selectedIndex].value;
+        
+        //refresh the page passing in the event id value as parameter
+        window.location.assign((window.location.pathname) + "?url=home/reviewPresentation/<?php echo $data[3] ?>/" + eventID);
+    }
+</script>
 
 </body>
 </html>

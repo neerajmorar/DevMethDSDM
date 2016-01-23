@@ -296,17 +296,23 @@ class Home extends Controller
         $this->view("inviteAudience", array($event->eventList, $feedback));
     }
     
-    public function reviewPresentation()
+    public function reviewPresentation($eventID = null, $contributorID = null)
     {
         $event = $this->model("Event");
         $event->showListOfEvents();
         
         $eventContributor = $this->model("EventContributor");
         
-        $eventContributor->getEventContributors(6);
+        if (!empty($eventID) && $eventID != 0)
+        {
+            $eventContributor->getEventContributors($eventID);
+        }
         
-        $eventContributor->createPresentation();
+        if (!empty($contributorID) && $contributorID != 0)
+        {
+            $eventContributor->createPresentation($eventID, $contributorID);
+        }
         
-        $this->view("reviewPresentation", array($event->eventList, $eventContributor->eventContributors, $eventContributor->presentationType));
+        $this->view("reviewPresentation", array($event->eventList, $eventContributor->eventContributors, $eventContributor->presentationType, $eventID, $contributorID));
     }
 }
