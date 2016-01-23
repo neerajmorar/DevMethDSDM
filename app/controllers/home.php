@@ -158,12 +158,11 @@ class Home extends Controller
           $submissionValidation = false;    
         }
         
-        // need validation for event type
+        //need validation for event type
        // if (empty($_FILES['upload']['name'])) {
         //    $submissionValidation = false;
        // }
         
-
         if ($submissionValidation == false) 
         {     
             header('Location:index.php?url=home/submitPresentation');  

@@ -12,11 +12,12 @@ class Event
     public $address2;
     public $city;
     public $postCode;
+    public $noOfContributors;
+    public $noOfAudienceMembers;
+    public $postMaterialLink;
+    public $surveyLink;
     */
-    public $noOfContributors = 0;
-    public $noOfAudienceMembers = 0;
-    public $postMaterialLink = '';
-    public $surveyLink = '';
+
             
     private $connection;
     private $result;
@@ -148,13 +149,6 @@ class Event
         $query = "INSERT INTO event (type, name, date, noOfContributors, noOfAudienceMembers, address1, address2, city, postCode, description) VALUES($eventType, '$eventName', '$eventDate', 0, 0, '$address1', '$address2', '$city', '$postcode', '$description');";
         
         mysqli_query($this->connection, $query) or die(mysqli_error($this->connection));
-        
-        /*while (($row = mysqli_fetch_assoc($this->result)) != false)
-        {
-            $this->events[] = $row;
-        }
-        
-        mysqli_free_result($this->result);*/
         mysqli_close($this->connection);
     }
     
@@ -165,16 +159,9 @@ class Event
         $conn = new Credentials;
         $this->connection = $conn->conn;
         
-        $query = 'INSERT INTO abstract VALUES("$userID", "$eventType", "$upload")';
+        $query = "INSERT INTO presentationattachments (contributorID, eventtype, upload) VALUES('$userID', '$eventType', '$upload')";
         
-        $this->result = mysqli_query($this->connection, $query);
-        
-        while (($row = mysqli_fetch_assoc($this->result)) != false)
-        {
-            $this->events[] = $row;
-        }
-        
-        mysqli_free_result($this->result);
+        mysqli_query($this->connection, $query) or die(mysqli_error($this->connection));
         mysqli_close($this->connection);
         
     }
