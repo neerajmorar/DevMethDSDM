@@ -314,4 +314,22 @@ class Home extends Controller
         
         $this->view("reviewPresentation", array($event->eventList, $eventContributor->eventContributors, $eventContributor->presentationType, $eventID, $contributorID));
     }
+    
+    public function acceptPresentation($eventID = null, $contributorID = null)
+    {
+        $eventContributor = $this->model("EventContributor");
+        
+        $eventContributor->acceptPresentation($eventID, $contributorID);
+        
+        die(header("location: index.php?url=home/reviewPresentation/" . $eventID));
+    }
+    
+    public function declinePresentation($eventID = null, $contributorID = null)
+    {
+        $eventContributor = $this->model("EventContributor");
+        
+        $eventContributor->declinePresentation($eventID, $contributorID);
+        
+        die(header("location: index.php?url=home/reviewPresentation/" . $eventID));
+    }
 }

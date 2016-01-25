@@ -10,6 +10,8 @@ require '../public/_header.php';
     <h2><?php echo $pageTitle; ?></h2>
     
     <form method="post">
+        <input type="button" value="Decline" style="background-color: #AA0000; color: #FFF;" onclick="location.href='index.php?url=home/declinePresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
+        <input type="button" value="Accept" onclick="location.href='index.php?url=home/acceptPresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
         <div class="table-layout">
             <div class="left-col">
                 <div class="row-1">
