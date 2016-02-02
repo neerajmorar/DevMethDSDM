@@ -6,13 +6,18 @@ require '../public/_header.php';
 </header>
 
 <div id="content">
-    <h2><?php echo $pageTitle; ?></h2>
-    <p id="feedback"><?php echo $feedback; ?></p>
     <form id="myForm" name="myForm" onsubmit=" method="POST" action="form_script.php" >
 			
-        <input type='reset' value='Clear Form' />
-        <input type='submit' value='Send Email' onclick="return validate();" />
-		<div class="table-layout">	
+        
+		<div class="table-layout">
+                    <h2><?php echo $pageTitle; ?></h2>
+                    <p id="feedback"><?php echo $feedback; ?></p>
+                    
+                    <input type='reset' value='Clear Form' />
+                    <input type='submit' value='Send Email' onclick="return validate();" />
+                    <br />
+                    <br />
+                    
                     <div class="left-col">
                         <div class="row-1">
                             <label>Event Title:</label>
