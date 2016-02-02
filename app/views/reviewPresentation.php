@@ -7,12 +7,15 @@ require '../public/_header.php';
 </header>
 
 <div id="content">
-    <h2><?php echo $pageTitle; ?></h2>
-    
     <form method="post">
-        <input type="button" value="Decline" style="background-color: #AA0000; color: #FFF;" onclick="location.href='index.php?url=home/declinePresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
-        <input type="button" value="Accept" onclick="location.href='index.php?url=home/acceptPresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
         <div class="table-layout">
+            <h2><?php echo $pageTitle; ?></h2>
+            
+            <input type="button" value="Decline" style="background-color: #AA0000; color: #FFF;" onclick="location.href='index.php?url=home/declinePresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
+            <input type="button" value="Accept" onclick="location.href='index.php?url=home/acceptPresentation/<?php echo $data[3] . "/" . $data[4]; ?>'" />
+            <br />
+            <br/>
+            
             <div class="left-col">
                 <div class="row-1">
                     <label>Select Event:</label>

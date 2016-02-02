@@ -7,14 +7,14 @@ require '../public/_header.php';
 </header>
 
 <div id="content">
-    <h2><?php echo $pageTitle; ?></h2>
-    
     <form method="post" enctype="multipart/form-data" id="submitAbstractForm" onsubmit="return formSubmission()" >
-        <input type="submit" value="Submit" />
-        <p id="reqFields"><strong>* Required fields</strong></p>
-        
         <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
         <div class="table-layout">
+            <h2><?php echo $pageTitle; ?></h2>
+            
+            <input type="submit" value="Submit" />
+            <p id="reqFields"><strong>* Required fields</strong></p>
+            
             <div class="left-col">
                 <div class="row-1">
                     <label>Select Event:<strong>*</strong></label>

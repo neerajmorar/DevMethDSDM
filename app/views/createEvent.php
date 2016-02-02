@@ -10,18 +10,19 @@ require '../public/_header.php';
 
 
 <div id='content'>
-    
-    
-    <h2><?php echo $pageTitle; ?></h2>
-    
-    <p>* Required fields.</p>
-            
     <form id='eventSetup' method='POST' action='index.php?url=home/eventSetup'>
         
-        <input type='submit' value='Submit'/>
-        <input type='button' value='Reset' onclick='clearForm()' />
+        
         
         <div class="table-layout">
+            <h2><?php echo $pageTitle; ?></h2>
+            
+            <input type='submit' value='Submit'/>
+            <input type='button' value='Reset' onclick='clearForm()' />
+    
+            <p><strong>* Required fields</strong></p>
+            
+    
              
             <div class="left-col">
                 
@@ -80,7 +81,7 @@ require '../public/_header.php';
             </div>
             </div>
         
-        </div>
+        
     </form>
     
 </div>

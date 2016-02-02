@@ -7,10 +7,10 @@ require '../public/_header.php';
 </header>
 
 <div id="content">
-    <h2><?php echo $pageTitle; ?></h2>
-    
     <form method="post">
         <div class="table-layout">
+            <h2><?php echo $pageTitle; ?></h2>
+            
             <div class="left-col">
                 <div class="row-1">
                     <input class="homePage" type="button" value="Create Event" onclick="location.href='index.php?url=home/createEvent'" />

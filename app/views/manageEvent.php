@@ -24,17 +24,17 @@ if (isset($data[1][0]) == false)
 </header>
 
 <div id="content">
-    <!-- page title as specified above -->
-    <h2><?php echo $pageTitle; ?></h2>    
-    
     <!-- page driven by a form -->
     <form method="post" id="manageEventForm">
-        <!-- edit button; used to edit the event - see JavaScript at the bottom of page -->
-        <input type="button" id="editEvent" onclick="editForm()" value="Edit"/>
         
-        <p id="reqFields"><strong>* Required fields</strong></p>
         <!-- use a table layout to order form elements side-by-side using CSS -->
         <div class="table-layout" id="formContent">
+            <!-- page title as specified above -->
+            <h2><?php echo $pageTitle; ?></h2>
+            <!-- edit button; used to edit the event - see JavaScript at the bottom of page -->
+            <input type="button" id="editEvent" onclick="editForm()" value="Edit"/>
+
+            <p id="reqFields"><strong>* Required fields</strong></p>
             <!-- left column for table layout -->
             <div class="left-col">
                 <!-- create rows, each row has a corresponding row in right column -->
@@ -201,7 +201,7 @@ if (isset($data[1][0]) == false)
         submitButton.setAttribute("value", "Save");
         submitButton.setAttribute("onclick", "saveEvent()");
         //insert button before the table-layout div
-        document.getElementById("manageEventForm").insertBefore(submitButton, document.getElementById("reqFields"));
+        document.getElementById("formContent").insertBefore(submitButton, document.getElementById("reqFields"));
         
         //create delete button
         var deleteButton = document.createElement("input");
@@ -212,7 +212,7 @@ if (isset($data[1][0]) == false)
         //background color red to give as a sign of warning
         deleteButton.style.backgroundColor = "#AA0000";
         deleteButton.style.color = "#FFF";
-        document.getElementById("manageEventForm").insertBefore(deleteButton, document.getElementById("reqFields"));
+        document.getElementById("formContent").insertBefore(deleteButton, document.getElementById("reqFields"));
         
         //edit confirmRefresh function to display message 1
         document.getElementById("body").setAttribute("onbeforeunload","return confirmRefresh(1)");

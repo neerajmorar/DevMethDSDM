@@ -10,21 +10,16 @@ require '../public/_header.php';
 
 
 <div id='content'>
-    
-    
-    <h2><?php echo $pageTitle; ?></h2>
-    
-    <p>* Required fields.</p>
             
     <form id='presentationSub' method='POST' action='index.php?url=home/presentationSubmission'>
-        
-        <input type='submit' value='Submit'/>
-        <input type='button' value='Reset' onclick='clearForm()' />
             
         <div class="table-layout">
-            
-            <div class="left-col">
+            <h2><?php echo $pageTitle; ?></h2>
                 
+            <input type='submit' value='Submit'/>
+            <input type='button' value='Reset' onclick='clearForm()' />
+            <p><strong>* Required fields</strong></p>
+            <div class="left-col">
                 <div class="row-1">
                     <label>Your ID:*</label>
                     <input type='text' name='userID'>
