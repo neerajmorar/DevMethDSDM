@@ -12,7 +12,7 @@ require '../public/_header.php';
         
 		<div class="table-layout">
                     <h2><?php echo $pageTitle; ?></h2>
-                    <p id="feedback"><?php echo $feedback; ?></p>
+                    <p id="feedback"></p>
                     
                     <input type='reset' value='Clear Form' />
                     <input type='submit' value='Send Email' onclick="return validate();" />
