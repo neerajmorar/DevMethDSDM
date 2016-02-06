@@ -151,6 +151,13 @@ input[type=password]
     color: #AA0000;
 }
 
+.err{
+	color:red;
+	font-style: italic;
+	font-size: 15px;
+	visibility: hidden;
+}
+
 .table-layout
 {
     /*border: 1px solid black;*/

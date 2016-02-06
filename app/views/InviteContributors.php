@@ -21,7 +21,7 @@ require '../public/_header.php';
                     
                     <div class="left-col">
                         <div class="row-1">
-                            <label>Event Title:</label>
+                            <label>Event Title:*</label><span id="errevent" class="err">Event Title is required</span>
                             <select name="event" id="event"> 
 					<option value="0">Please Select</option>
 					<?php 
@@ -31,7 +31,7 @@ require '../public/_header.php';
                                             }
                                         ?>
                             </select>
-                            <span id="errevent" class="error">This is required</span>
+                            
                         </div>
                         <div class="row-2">
                             <label>Enter Contributor's Email:</label>
@@ -39,24 +39,24 @@ require '../public/_header.php';
                             <input type='button' value='ADD' style='width: 60px; padding: 0px;' onclick='add()' />
                         </div>
                         <div class='row-3'>
-                            <label>Selected Contributors:</label>
-                            <TEXTAREA rows="10" cols="40" name="inf" id="inf" readonly></TEXTAREA>
-                            <span id="errinf" class="error">This is required</span>
+                            <label>Selected Contributors:*</label><span id="errinf" class="err">Contributors required</span>
+                            <TEXTAREA rows="6" cols="40" name="inf" id="inf" readonly></TEXTAREA>
+                            
                         </div>
                         <div class="row-4">
-                            <label>Email Type:</label>
+                            <label>Email Type:*</label><span id="erretype" class="err">Email Type is required</span>
                             <select name="etype" id="etype"  onChange="">
 					<option value="0">Please Select</option>
 					<option value="1">Abstract</option>
 					<option value="2">Presentation</option>
                                         <option value='3'>Final Invitation</option>
                             </select>
-                            <span id="erretype" class="error">This is required</span>
+                            
                         </div>
                         <div class="row-5">
-                            <label>Sender's Email:</label>
+                            <label>Sender's Email:*</label><span id="errsemail" class="err">Sender's Email is required</span>
                             <input type="email" name="semail" id="semail">
-                            <span id="errsemail" class="error">This is required</span>
+                            
                         </div>
                         <div class='row-6'>
                             <label>Attachment:</label>
@@ -65,29 +65,29 @@ require '../public/_header.php';
                     </div>
                     <div class="right-col">
                         <div class='row-1'>
-                            <label>Subject:</label>
+                            <label>Subject:*</label><span id="errsubject" class="err">Subject is required</span>
                             <input type="text" name="subject" id="subject">
-                            <span id="errsubject" class="error">This is required</span>
+                            
                         </div>
                         <div class='row-2'>
-                            <label>Greeting:</label>
+                            <label>Greeting:*</label><span id="errgreeting" class="err">Greeting is required</span>
                             <input type="text" name="greeting" id="greeting" />
-                            <span id="errgreeting" class="error">This is required</span>
+                            
                         </div>
                         <div class='row-3'>
-                            <label>Message:</label>
-                            <textarea rows="10" cols="80" name="message" id="message"></textarea>
-                            <span id="errmessage" class="error">This is required</span>
+                            <label>Message:*</label><span id="errmessage" class="err">Message is required</span>
+                            <textarea rows="6" cols="80" name="message" id="message"></textarea>
+                            
                         </div>
                         <div class='row-4'>
-                            <label>Email Signature:</label>
-                            <textarea rows='10' cols='50' name="esignature" id="esignature" ></textarea>
-                            <span id="errsig" class="error">This is required</span>
+                            <label>Email Signature:*</label><span id="errsig" class="err">Email Signature is required</span>
+                            <textarea rows='5' cols='50' name="esignature" id="esignature" ></textarea>
+                            
                         </div>
                     </div>
                 </div>
 				
-                
+               
 
     </form>
 </div>
@@ -105,7 +105,7 @@ require '../public/_header.php';
 
 function validate(){
 	
-	var error = 0;
+	var err = 0;
 	
 	var errevent = document.getElementById("errevent");
 	var event = document.myForm.event.value;
@@ -113,10 +113,10 @@ function validate(){
 	{
 		errevent.style.visibility = "visible";
 		document.getElementById('event').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}else {
 		errevent.style.visibility = "hidden";
-		error = 0;
+		err = 0;
 	}
 	
 	var errinf = document.getElementById("errinf");
@@ -125,11 +125,11 @@ function validate(){
 	{
 		errinf.setAttribute("style","visibility:visible");
 		document.getElementById('inf').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errinf.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
 	var erretype = document.getElementById("erretype");
@@ -138,11 +138,11 @@ function validate(){
 	{
 		erretype.style.visibility = "visible";
 		document.getElementById('etype').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		erretype.style.visibility = "hidden";
-		error = 0;
+		err = 0;
 	}
 	
 	var errsemail = document.getElementById("errsemail");
@@ -151,11 +151,11 @@ function validate(){
 	{
 		errsemail.setAttribute("style","visibility:visible");
 		document.getElementById('semail').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errsemail.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
 	var errsubject = document.getElementById("errsubject");
@@ -164,11 +164,11 @@ function validate(){
 	{
 		errsubject.setAttribute("style","visibility:visible");
 		document.getElementById('subject').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errsubject.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
 	var errgreeting  = document.getElementById("errgreeting");
@@ -177,11 +177,11 @@ function validate(){
 	{
 		errgreeting.setAttribute("style","visibility:visible");
 		document.getElementById('greeting').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errgreeting.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
 	var errmessage  = document.getElementById("errmessage");
@@ -190,11 +190,11 @@ function validate(){
 	{
 		errmessage.setAttribute("style","visibility:visible");
 		document.getElementById('message').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errmessage.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
 	var errsig  = document.getElementById("errsig");
@@ -203,14 +203,14 @@ function validate(){
 	{
 		errsig.setAttribute("style","visibility:visible");
 		document.getElementById('esignature').style.borderColor = "red";
-		error = 1;
+		err = 1;
 	}
 	else {
 		errsig.setAttribute("style","visibility:hidden");
-		error = 0;
+		err = 0;
 	}
 	
-	if (error == 0){
+	if (err == 0){
 		return true;
 	}
 	else{
